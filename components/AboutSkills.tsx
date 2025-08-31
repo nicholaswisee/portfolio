@@ -3,7 +3,7 @@
 import React from 'react'
 import { Card } from './ui/card'
 import { Button } from './ui/button'
-import { Code, Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu } from 'lucide-react'
+import { Code, Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu, CodeXml, Terminal, ToolCase, Wrench } from 'lucide-react'
 import { Badge } from './ui/badge'
 import InfiniteScrollBadges from './InfiniteScrollBadges'
 
@@ -117,21 +117,21 @@ export default function AboutSkills() {
         <div className="space-y-3 sm:space-y-4 md:space-y-6 flex-1">
           <div>
             <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-              <Code className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+              <CodeXml className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
               Web Development
             </h3>
             <InfiniteScrollBadges badges={developmentBadges} />
           </div>
           <div>
             <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-              <Code className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+              <Terminal className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
               Languages
             </h3>
             <InfiniteScrollBadges badges={programmingLanguages} direction='right'/>
           </div>
           <div>
             <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-              <Database className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse-glow" />
+              <Wrench className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse-glow" />
               Tools
             </h3>
             <InfiniteScrollBadges badges={toolsBadges} />

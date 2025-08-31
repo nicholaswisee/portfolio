@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'motion/react'
 import { Card } from './ui/card'
 import { Button } from './ui/button'
-import { Code, Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu, CodeXml, Terminal, ToolCase, Wrench } from 'lucide-react'
-import { Badge } from './ui/badge'
+import { Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu, CodeXml, Terminal, ToolCase, Wrench } from 'lucide-react'
 import InfiniteScrollBadges from './InfiniteScrollBadges'
 
 const ButtonSections = () => {
@@ -67,9 +67,13 @@ export default function AboutSkills() {
     { name: "Bun", icon: "/bun-original.svg" },
     { name: "pnpm", icon: "/pnpm-original.svg" },
     { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
-    { name: "Prisma", icon: "/prisma-original.svg" },
-    { name: "Express", icon: "/express-original.svg" },
-    { name: "Vite", icon: "/vitejs-original.svg" }
+    { name: "PrismaORM", icon: "/prisma-original.svg" },
+    { name: "Express", icon: "/express.webp" },
+    { name: "Hono", icon: "/hono.svg" },
+    { name: "Vite", icon: "/vitejs-original.svg" },
+    { name: "DrizzleORM", icon: "/drizzle-orm.webp" },
+    { name: "React Query", icon: "/react-query.webp" },
+    { name: "Zod", icon: "/zod.png"}
   ]
 
   const programmingLanguages = [
@@ -92,52 +96,102 @@ export default function AboutSkills() {
     { name: "GitHub", icon: "/github.svg" },
     { name: "Vercel", icon: "/vercel.svg" },
     { name: "Postman", icon: "/postman-original.svg" },
-      { name: "Git", icon: "/git-original.svg" },
-    { name: "GitHub", icon: "/github.svg" },
-    { name: "Vercel", icon: "/vercel.svg" },
-    { name: "Postman", icon: "/postman-original.svg" }
+    { name: "Supabase", icon: "/supabase-original.svg"},
+    { name: "MongoDB", icon: "/mongodb-original.svg"},
+    { name: "PostgreSQL", icon: "/postgresql-original.svg"},
+    { name: "Cloudflare R2", icon: "/cloudflare-original.svg"}
   ]
 
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8" id="About">
-      <Card className="p-4 sm:p-6 md:p-8 h-auto  flex flex-col justify-start card-hover-scale">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold   text-glow">About Me</h2>
-        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 flex-1">
-          I'm a passionate learner with 2+ years of experience in full-stack development.
-          My passion to create is fueled by my curiosity in technology and how I can use it to solve real-world problems.
-          I'm particularly interested in Software Engineering and Big Data, currently exploring
-          Backend Development and Machine Learning.
-        </p>
-        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-glow">Connect With Me!</h2>
-        <ButtonSections />
-      </Card>
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 lg:items-stretch" id="About">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col justify-start card-hover-scale">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-glow"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            About Me
+          </motion.h2>
+          <motion.p 
+            className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 flex-1"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            I'm a passionate learner with 2+ years of experience in full-stack development.
+            My passion to create is fueled by my curiosity in technology and how I can use it to solve real-world problems.
+            I'm particularly interested in Software Engineering and Big Data, currently exploring
+            Backend Development and Machine Learning.
+          </motion.p>
+          <motion.div 
+            className="mt-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-glow mb-3 sm:mb-4">Connect With Me!</h2>
+            <ButtonSections />
+          </motion.div>
+        </Card>
+      </motion.div>
 
-      <Card className="p-4 sm:p-6 md:p-8 h-auto sm:h-80 md:h-96 flex flex-col justify-start card-hover-scale overflow-hidden">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-glow">Tools and Technologies</h2>
-        <div className="space-y-3 sm:space-y-4 md:space-y-6 flex-1">
-          <div>
-            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-              <CodeXml className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
-              Web Development
-            </h3>
-            <InfiniteScrollBadges badges={developmentBadges} />
-          </div>
-          <div>
-            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-              <Terminal className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
-              Languages
-            </h3>
-            <InfiniteScrollBadges badges={programmingLanguages} direction='right'/>
-          </div>
-          <div>
-            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-              <Wrench className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse-glow" />
-              Tools
-            </h3>
-            <InfiniteScrollBadges badges={toolsBadges} />
-          </div>
-        </div>
-      </Card>
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col justify-start card-hover-scale overflow-hidden">
+          <motion.h2 
+            className="text-xl sm:text-2xl md:text-3xl font-bold text-glow"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Tools and Technologies
+          </motion.h2>
+          <motion.div 
+            className="space-y-3 sm:space-y-4 md:space-y-6 flex-1"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div>
+              <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
+                <CodeXml className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+                Web Development
+              </h3>
+              <InfiniteScrollBadges badges={developmentBadges} />
+            </div>
+            <div>
+              <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
+                <Terminal className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+                Languages
+              </h3>
+              <InfiniteScrollBadges badges={programmingLanguages} direction='right'/>
+            </div>
+            <div>
+              <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
+                <Wrench className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+                Tools & Databases
+              </h3>
+              <InfiniteScrollBadges badges={toolsBadges} />
+            </div>
+          </motion.div>
+        </Card>
+      </motion.div>
     </div>
   )
 }

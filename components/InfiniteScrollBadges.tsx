@@ -1,10 +1,6 @@
 import { Badge } from "./ui/badge";
 import Image from "next/image";
-
-type BadgeItem = {
-  name: string;
-  icon: string;
-} | string;
+import { type BadgeItem } from "@/types/types";
 
 const InfiniteScrollBadges = ({ 
   badges, 
@@ -21,7 +17,7 @@ const InfiniteScrollBadges = ({
     }
     
     return (
-      <div className="flex items-center gap-1 sm:gap-1.5">
+      <div className="flex items-center gap-2 sm:gap-3">
         <Image 
           src={badge.icon} 
           alt={`${badge.name} logo`} 
@@ -35,7 +31,7 @@ const InfiniteScrollBadges = ({
   };
 
   return (
-    <div className={`overflow-hidden ${className}`}>
+    <div className={`overflow-hidden  ${className}`}>
       <style jsx>{`
         @keyframes scroll-left {
           0% {

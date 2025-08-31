@@ -15,21 +15,25 @@ import { useState } from "react";
 export function Nav() {
   const navItems = [
     {
-      name: "About Me",
-      link: "#About",
+      name: "Home",
+      link: "#",
     },
     {
-      name: "Experiences",
-      link: "#Experiences",
+      name: "About Me",
+      link: "#About",
     },
     {
       name: "Projects",
       link: "#Projects",
     },
-    {
-      name: "Contact",
-      link: "#Contact",
-    },
+    // {
+    //   name: "Experiences",
+    //   link: "#Experiences",
+    // },
+    // {
+    //   name: "Contact",
+    //   link: "#Contact",
+    // },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -67,22 +71,6 @@ export function Nav() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
-            </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>

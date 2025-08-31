@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} antialiased font-sans scroll-smooth`}
       >
-        {/* <Nav /> */}
+        <Nav />
         {children}
       </body>
     </html>

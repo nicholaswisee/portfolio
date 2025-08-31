@@ -78,11 +78,21 @@ export default function AboutSkills() {
     { name: "Python", icon: "/python-original.svg" },
     { name: "C", icon: "/c-original.svg" },
     { name: "HTML5", icon: "/html5-original.svg" },
+    { name: "CSS3", icon: "/css3-original.svg" },
+    { name: "TypeScript", icon: "/typescript-original.svg" },
+    { name: "JavaScript", icon: "/javascript-original.svg" },
+    { name: "Python", icon: "/python-original.svg" },
+    { name: "C", icon: "/c-original.svg" },
+    { name: "HTML5", icon: "/html5-original.svg" },
     { name: "CSS3", icon: "/css3-original.svg" }
-  ]
+]
 
   const toolsBadges = [
     { name: "Git", icon: "/git-original.svg" },
+    { name: "GitHub", icon: "/github.svg" },
+    { name: "Vercel", icon: "/vercel.svg" },
+    { name: "Postman", icon: "/postman-original.svg" },
+      { name: "Git", icon: "/git-original.svg" },
     { name: "GitHub", icon: "/github.svg" },
     { name: "Vercel", icon: "/vercel.svg" },
     { name: "Postman", icon: "/postman-original.svg" }
@@ -91,7 +101,7 @@ export default function AboutSkills() {
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8" id="About">
       <Card className="p-4 sm:p-6 md:p-8 h-auto  flex flex-col justify-start card-hover-scale">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-glow">About Me</h2>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold   text-glow">About Me</h2>
         <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 flex-1">
           I'm a passionate learner with 2+ years of experience in full-stack development.
           My passion to create is fueled by my curiosity in technology and how I can use it to solve real-world problems.
@@ -117,7 +127,7 @@ export default function AboutSkills() {
               <Code className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
               Languages
             </h3>
-            <InfiniteScrollBadges badges={programmingLanguages} />
+            <InfiniteScrollBadges badges={programmingLanguages} direction='right'/>
           </div>
           <div>
             <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">

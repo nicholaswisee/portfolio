@@ -6,7 +6,15 @@ type BadgeItem = {
   icon: string;
 } | string;
 
-const InfiniteScrollBadges = ({ badges, className = "" }: {badges: BadgeItem[], className?: string}) => {
+const InfiniteScrollBadges = ({ 
+  badges, 
+  className = "", 
+  direction = "left" 
+}: {
+  badges: BadgeItem[], 
+  className?: string,
+  direction?: "left" | "right"
+}) => {
   const renderBadgeContent = (badge: BadgeItem) => {
     if (typeof badge === 'string') {
       return badge;
@@ -29,7 +37,7 @@ const InfiniteScrollBadges = ({ badges, className = "" }: {badges: BadgeItem[], 
   return (
     <div className={`overflow-hidden ${className}`}>
       <style jsx>{`
-        @keyframes scroll {
+        @keyframes scroll-left {
           0% {
             transform: translateX(0);
           }
@@ -37,20 +45,35 @@ const InfiniteScrollBadges = ({ badges, className = "" }: {badges: BadgeItem[], 
             transform: translateX(-50%);
           }
         }
-        .scroll-animation {
-          animation: scroll 25s linear infinite;
+        @keyframes scroll-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
         }
-        .scroll-container:hover .scroll-animation {
+        .scroll-animation-left {
+          animation: scroll-left 25s linear infinite;
+        }
+        .scroll-animation-right {
+          animation: scroll-right 25s linear infinite;
+        }
+        .scroll-container:hover .scroll-animation-left,
+        .scroll-container:hover .scroll-animation-right {
           animation-play-state: paused;
         }
         @media (max-width: 640px) {
-          .scroll-animation {
-            animation: scroll 20s linear infinite;
+          .scroll-animation-left {
+            animation: scroll-left 20s linear infinite;
+          }
+          .scroll-animation-right {
+            animation: scroll-right 20s linear infinite;
           }
         }
       `}</style>
       <div className="scroll-container">
-        <div className="scroll-animation flex gap-1.5 sm:gap-2 w-fit">
+        <div className={`scroll-animation-${direction} flex gap-1.5 sm:gap-2 w-fit`}>
           {/* First set of badges */}
           {badges.map((badge, index) => (
             <Badge 

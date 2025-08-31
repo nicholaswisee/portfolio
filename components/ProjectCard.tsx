@@ -76,7 +76,7 @@ export default function ProjectCard( { project }: { project: Project }) {
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Link href="#" className='flex items-center gap-3 text-lg'>
+              <Link href={project.github} className='flex items-center gap-3 text-lg'>
                 <LucideGithub className='h-8 w-8 hover:text-secondary transition-colors duration-300 ease-out' />
               </Link>
             </motion.div>

@@ -1,0 +1,133 @@
+'use client'
+
+import React from 'react'
+import { Card } from './ui/card'
+import { Button } from './ui/button'
+import { Code, Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu } from 'lucide-react'
+import { Badge } from './ui/badge'
+import InfiniteScrollBadges from './InfiniteScrollBadges'
+
+const ButtonSections = () => {
+  return (
+    <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
+      <Button
+        variant="outline"
+        size="sm"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        onClick={() => window.open("https://github.com/nicholaswisee", "_blank")}
+      >
+        <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+        <span className="hidden sm:inline">GitHub</span>
+        <span className="sm:hidden">Git</span>
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        onClick={() => window.open("https://www.linkedin.com/in/nicholaswises/", "_blank")}
+      >
+        <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+        <span className="hidden sm:inline">LinkedIn</span>
+        <span className="sm:hidden">In</span>
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        onClick={() => window.open("mailto:nicholasaragih@gmail.com")}
+      >
+        <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+        <span className="hidden sm:inline">Email</span>
+        <span className="sm:hidden">@</span>
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        onClick={() => window.open("https://www.instagram.com/nicholaswises/", "_blank")}
+      >
+        <Instagram className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+        <span className="hidden sm:inline">Instagram</span>
+        <span className="sm:hidden">IG</span>
+      </Button>
+    </div>
+  )
+}
+
+type Tool = {
+  name: string,
+  icon: string,
+}
+
+export default function AboutSkills() {
+  const developmentBadges = [
+    { name: "React", icon: "/react-original.svg" },
+    { name: "Next.js", icon: "/nextjs-original.svg" },
+    { name: "Node.js", icon: "/nodejs-original.svg" },
+    { name: "Bun", icon: "/bun-original.svg" },
+    { name: "pnpm", icon: "/pnpm-original.svg" },
+    { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
+    { name: "Prisma", icon: "/prisma-original.svg" },
+    { name: "Express", icon: "/express-original.svg" },
+    { name: "Vite", icon: "/vitejs-original.svg" }
+  ]
+
+  const programmingLanguages = [
+    { name: "TypeScript", icon: "/typescript-original.svg" },
+    { name: "JavaScript", icon: "/javascript-original.svg" },
+    { name: "Python", icon: "/python-original.svg" },
+    { name: "C", icon: "/c-original.svg" },
+    { name: "HTML5", icon: "/html5-original.svg" },
+    { name: "CSS3", icon: "/css3-original.svg" }
+  ]
+
+  const toolsBadges = [
+    { name: "Git", icon: "/git-original.svg" },
+    { name: "GitHub", icon: "/github.svg" },
+    { name: "Vercel", icon: "/vercel.svg" },
+    { name: "Postman", icon: "/postman-original.svg" }
+  ]
+
+  return (
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8" id="About">
+      <Card className="p-4 sm:p-6 md:p-8 h-auto  flex flex-col justify-start card-hover-scale">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-glow">About Me</h2>
+        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 flex-1">
+          I'm a passionate learner with 2+ years of experience in full-stack development.
+          My passion to create is fueled by my curiosity in technology and how I can use it to solve real-world problems.
+          I'm particularly interested in Software Engineering and Big Data, currently exploring
+          Backend Development and Machine Learning.
+        </p>
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-glow">Connect With Me!</h2>
+        <ButtonSections />
+      </Card>
+
+      <Card className="p-4 sm:p-6 md:p-8 h-auto sm:h-80 md:h-96 flex flex-col justify-start card-hover-scale overflow-hidden">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-glow">Tools and Technologies</h2>
+        <div className="space-y-3 sm:space-y-4 md:space-y-6 flex-1">
+          <div>
+            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
+              <Code className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+              Web Development
+            </h3>
+            <InfiniteScrollBadges badges={developmentBadges} />
+          </div>
+          <div>
+            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
+              <Code className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
+              Languages
+            </h3>
+            <InfiniteScrollBadges badges={programmingLanguages} />
+          </div>
+          <div>
+            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
+              <Database className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse-glow" />
+              Tools
+            </h3>
+            <InfiniteScrollBadges badges={toolsBadges} />
+          </div>
+        </div>
+      </Card>
+    </div>
+  )
+}

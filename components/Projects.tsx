@@ -35,7 +35,7 @@ const projects: Project[] = [
   {
     name: "Lokasharana",
     description: "A photo gallery for FSRD 2024's graduation ceremony.",
-    url: "www.lokasharana.com",
+    url: "https://www.lokasharana.com",
     image: "/lokasharana.png",
     github: "https://github.com/nicholaswisee/FSRD-2024-Web-Gallery",
     badges: [
@@ -60,7 +60,6 @@ const projects: Project[] = [
   {
     name: "Nimons Hospital",
     description: "A CLI-based hospital system simulator with fundamental data structure implementations.",
-    url: "www.lokasharana.com",
     github: "https://github.com/nicholaswisee/Tubes-Alpro-1",
     image: "/hospitalwebp.webp",
     badges: [

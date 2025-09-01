@@ -96,6 +96,7 @@ export default function AboutSkills() {
     { name: "GitHub", icon: "/github.svg" },
     { name: "Vercel", icon: "/vercel.svg" },
     { name: "Postman", icon: "/postman-original.svg" },
+    { name: "Figma", icon: "/figma-original.svg" },
     { name: "Supabase", icon: "/supabase-original.svg"},
     { name: "MongoDB", icon: "/mongodb-original.svg"},
     { name: "PostgreSQL", icon: "/postgresql-original.svg"},

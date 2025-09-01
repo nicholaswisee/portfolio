@@ -14,7 +14,6 @@ import {
 import Image from 'next/image'
 import Infest from '@/public/infest.png'
 import Link from 'next/link'
-// import Github from "@/public/github.svg"
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 import {Project, type BadgeItem} from "@/types/types";
@@ -80,15 +79,15 @@ export default function ProjectCard( { project }: { project: Project }) {
                 <LucideGithub className='h-8 w-8 hover:text-secondary transition-colors duration-300 ease-out' />
               </Link>
             </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
+            { project.url && <motion.div
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               <Link href={project.url} target='_blank' className='flex items-center gap-3 text-lg'>
                 <Button className='hover:bg-secondary hover:text-white transition-all duration-300 ease-out'>Live Demo <ExternalLink /></Button>
               </Link>
-            </motion.div>
+            </motion.div>}
         </CardFooter>
       </Card>
     </motion.div>

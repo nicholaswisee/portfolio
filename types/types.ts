@@ -6,8 +6,8 @@ export type BadgeItem = {
 export type Project = {
   name: string;
   description: string;
-  url: string;
+  url?: string;
   image: string;
   badges: BadgeItem[];
-  github: string
+  github: string;
 }

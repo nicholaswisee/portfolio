@@ -26,14 +26,6 @@ export function Nav() {
       name: "Projects",
       link: "#Projects",
     },
-    // {
-    //   name: "Experiences",
-    //   link: "#Experiences",
-    // },
-    // {
-    //   name: "Contact",
-    //   link: "#Contact",
-    // },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

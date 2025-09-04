@@ -11,3 +11,11 @@ export type Project = {
   badges: BadgeItem[];
   github: string;
 }
+
+export type Experience = {
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+  description2?: string;
+}

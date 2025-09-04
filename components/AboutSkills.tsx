@@ -7,6 +7,51 @@ import { Button } from './ui/button'
 import { Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu, CodeXml, Terminal, ToolCase, Wrench } from 'lucide-react'
 import InfiniteScrollBadges from './InfiniteScrollBadges'
 
+  const developmentBadges = [
+    { name: "React", icon: "/react-original.svg" },
+    { name: "Next.js", icon: "/nextjs-original.svg" },
+    { name: "Node.js", icon: "/nodejs-original.svg" },
+    { name: "Bun", icon: "/bun-original.svg" },
+    { name: "pnpm", icon: "/pnpm-original.svg" },
+    { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
+    { name: "PrismaORM", icon: "/prisma-original.svg" },
+    { name: "Express", icon: "/express.webp" },
+    { name: "Hono", icon: "/hono.svg" },
+    { name: "Vite", icon: "/vitejs-original.svg" },
+    { name: "DrizzleORM", icon: "/drizzle-orm.webp" },
+    { name: "React Query", icon: "/react-query.webp" },
+    { name: "Zod", icon: "/zod.png"},
+    { name: "Zustand", icon: "/zustand.svg"},
+    { name: "Motion", icon: "/motion.png"}
+  ]
+
+  const programmingLanguages = [
+    { name: "TypeScript", icon: "/typescript-original.svg" },
+    { name: "JavaScript", icon: "/javascript-original.svg" },
+    { name: "Python", icon: "/python-original.svg" },
+    { name: "C", icon: "/c-original.svg" },
+    { name: "HTML5", icon: "/html5-original.svg" },
+    { name: "CSS3", icon: "/css3-original.svg" },
+    { name: "TypeScript", icon: "/typescript-original.svg" },
+    { name: "JavaScript", icon: "/javascript-original.svg" },
+    { name: "Python", icon: "/python-original.svg" },
+    { name: "C", icon: "/c-original.svg" },
+    { name: "HTML5", icon: "/html5-original.svg" },
+    { name: "CSS3", icon: "/css3-original.svg" }
+]
+
+  const toolsBadges = [
+    { name: "Git", icon: "/git-original.svg" },
+    { name: "GitHub", icon: "/github.svg" },
+    { name: "Vercel", icon: "/vercel.svg" },
+    { name: "Postman", icon: "/postman-original.svg" },
+    { name: "Figma", icon: "/figma-original.svg" },
+    { name: "Supabase", icon: "/supabase-original.svg"},
+    { name: "MongoDB", icon: "/mongodb-original.svg"},
+    { name: "PostgreSQL", icon: "/postgresql-original.svg"},
+    { name: "Cloudflare R2", icon: "/cloudflare-original.svg"}
+  ]
+
 const ButtonSections = () => {
   return (
     <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
@@ -54,66 +99,18 @@ const ButtonSections = () => {
   )
 }
 
-type Tool = {
-  name: string,
-  icon: string,
-}
-
 export default function AboutSkills() {
-  const developmentBadges = [
-    { name: "React", icon: "/react-original.svg" },
-    { name: "Next.js", icon: "/nextjs-original.svg" },
-    { name: "Node.js", icon: "/nodejs-original.svg" },
-    { name: "Bun", icon: "/bun-original.svg" },
-    { name: "pnpm", icon: "/pnpm-original.svg" },
-    { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
-    { name: "PrismaORM", icon: "/prisma-original.svg" },
-    { name: "Express", icon: "/express.webp" },
-    { name: "Hono", icon: "/hono.svg" },
-    { name: "Vite", icon: "/vitejs-original.svg" },
-    { name: "DrizzleORM", icon: "/drizzle-orm.webp" },
-    { name: "React Query", icon: "/react-query.webp" },
-    { name: "Zod", icon: "/zod.png"}
-  ]
-
-  const programmingLanguages = [
-    { name: "TypeScript", icon: "/typescript-original.svg" },
-    { name: "JavaScript", icon: "/javascript-original.svg" },
-    { name: "Python", icon: "/python-original.svg" },
-    { name: "C", icon: "/c-original.svg" },
-    { name: "HTML5", icon: "/html5-original.svg" },
-    { name: "CSS3", icon: "/css3-original.svg" },
-    { name: "TypeScript", icon: "/typescript-original.svg" },
-    { name: "JavaScript", icon: "/javascript-original.svg" },
-    { name: "Python", icon: "/python-original.svg" },
-    { name: "C", icon: "/c-original.svg" },
-    { name: "HTML5", icon: "/html5-original.svg" },
-    { name: "CSS3", icon: "/css3-original.svg" }
-]
-
-  const toolsBadges = [
-    { name: "Git", icon: "/git-original.svg" },
-    { name: "GitHub", icon: "/github.svg" },
-    { name: "Vercel", icon: "/vercel.svg" },
-    { name: "Postman", icon: "/postman-original.svg" },
-    { name: "Figma", icon: "/figma-original.svg" },
-    { name: "Supabase", icon: "/supabase-original.svg"},
-    { name: "MongoDB", icon: "/mongodb-original.svg"},
-    { name: "PostgreSQL", icon: "/postgresql-original.svg"},
-    { name: "Cloudflare R2", icon: "/cloudflare-original.svg"}
-  ]
-
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 lg:items-stretch" id="About">
+    <div className="mx-auto px-2 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 lg:items-stretch" id="About">
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col justify-start card-hover-scale">
+        <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col gap-3 md:gap-5 justify-start card-hover-scale">
           <motion.h2 
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-glow"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-glow"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -140,7 +137,7 @@ export default function AboutSkills() {
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-glow mb-3 sm:mb-4">Connect With Me!</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-glow mb-3 sm:mb-4">Connect With Me!</h2>
             <ButtonSections />
           </motion.div>
         </Card>
@@ -154,7 +151,7 @@ export default function AboutSkills() {
       >
         <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col justify-start card-hover-scale overflow-hidden">
           <motion.h2 
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-glow"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-glow"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

@@ -26,6 +26,10 @@ export function Nav() {
       name: "Projects",
       link: "#Projects",
     },
+    {
+      name: "Personal",
+      link: "#Personal",
+    }
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

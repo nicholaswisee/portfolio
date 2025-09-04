@@ -71,7 +71,7 @@ const projects: Project[] = [
   },
 ]
 
-export default function () {
+export default function Projects() {
   return (
     <motion.div 
       className="mx-auto px-2 sm:px-6 lg:px-8"

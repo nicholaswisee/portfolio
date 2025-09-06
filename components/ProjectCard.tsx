@@ -31,13 +31,15 @@ export default function ProjectCard( { project }: { project: Project }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      className="h-full w-full flex justify-center"
     >
-      <Card className='max-w-md shadow-2xl hover:shadow-accent/50 transition-shadow duration-500 ease-out'>
+      <Card className='w-full max-w-md h-full shadow-2xl hover:shadow-accent/50 transition-shadow duration-500 ease-out flex flex-col'>
         <CardTitle className='text-2xl'>{project.name}</CardTitle>
         <CardFooter>
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="w-full"
           >
             <Image 
               src={project.image} 
@@ -48,8 +50,8 @@ export default function ProjectCard( { project }: { project: Project }) {
             />
           </motion.div>
         </CardFooter>
-        <CardContent>
-          <CardDescription className='text-lg text-white'>
+        <CardContent className="flex-1 flex flex-col">
+          <CardDescription className='text-lg text-white flex-1'>
             {project.description}
           </CardDescription>
           <div className="mt-3 text-left flex -space-x-3">
@@ -69,7 +71,7 @@ export default function ProjectCard( { project }: { project: Project }) {
             ))}
           </div>
         </CardContent>
-        <CardFooter className='flex justify-between items-center mt-2'>
+        <CardFooter className='flex justify-between items-center mt-auto'>
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}

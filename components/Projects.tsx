@@ -107,7 +107,7 @@ export default function Projects() {
               Here's a bunch of my recent projects!
             </motion.p>
             <motion.div 
-              className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'
+              className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch'
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -124,6 +124,7 @@ export default function Projects() {
                     ease: "easeOut"
                   }}
                   viewport={{ once: true, amount: 0.3 }}
+                  className='h-full min-h-[430px]'
                 >
                   <ProjectCard project={project} />
                 </motion.div>

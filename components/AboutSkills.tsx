@@ -58,42 +58,38 @@ const ButtonSections = () => {
       <Button
         variant="outline"
         size="sm"
-        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
         onClick={() => window.open("https://github.com/nicholaswisee", "_blank")}
       >
         <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-        <span className="hidden sm:inline">GitHub</span>
-        <span className="sm:hidden">Git</span>
+        <span className="inline">GitHub</span>
       </Button>
       <Button
         variant="outline"
         size="sm"
-        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
         onClick={() => window.open("https://www.linkedin.com/in/nicholaswises/", "_blank")}
       >
         <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-        <span className="hidden sm:inline">LinkedIn</span>
-        <span className="sm:hidden">In</span>
+        <span className="inline">LinkedIn</span>
       </Button>
       <Button
         variant="outline"
         size="sm"
-        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
         onClick={() => window.open("mailto:nicholasaragih@gmail.com")}
       >
         <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-        <span className="hidden sm:inline">Email</span>
-        <span className="sm:hidden">@</span>
+        <span className="inline">Email</span>
       </Button>
       <Button
         variant="outline"
         size="sm"
-        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm flex-1 sm:flex-none min-w-0"
+        className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
         onClick={() => window.open("https://www.instagram.com/nicholaswises/", "_blank")}
       >
         <Instagram className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-        <span className="hidden sm:inline">Instagram</span>
-        <span className="sm:hidden">IG</span>
+        <span className="sm:inline">Instagram</span>
       </Button>
     </div>
   )

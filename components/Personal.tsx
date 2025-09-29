@@ -14,6 +14,12 @@ const experiences:  Experience[] = [
     duration: "Apr 2025 - Present",
     description: "Led and contributed to the development of 4 professional websites for KSEP ITB, supervising a team of 4 while actively working on design, implementation, and deployment to ensure timely, high-quality results."
   },
+  {
+    title: "Backend Developer",
+    company: "OSKM ITB 2025",
+    duration: "Aug 2025",
+    description: "Developed and deployed RESTful API endpoints using Hono, Drizzle, and Zod, documented in OpenAPI format, supporting OSKM ITB 2025’s companion app with 99% uptime for 1,500+ active users.",
+  },
   { 
     title: "Project Officer",
     company: "IMPACT 5.0",
@@ -22,10 +28,11 @@ const experiences:  Experience[] = [
     description2: "Coordinated 9 divisions including 17 sub-divisions across a 6-month period of intensive work, showcasing project management skills."
   },
   {
-    title: "Backend Developer",
-    company: "OSKM ITB 2025",
-    duration: "Aug 2025",
-    description: "Implemented several key API endpoints using Hono, Zod, OpenAPI, and Drizzle for OSKM ITB 2025's companion app.",
+    title: "Frontend Developer",
+    company: "TEDxITB 2025",
+    duration: "Nov 2024 - Apr 2025",
+    description: "Translated UI/UX designs from Figma to TailwindCSS and Next.js while providing attention to detail and design fidelity, enhancing merchandise shopping and event registration for over 200 users.",
+    description2: "Implemented secure authentication with NextAuth, enabling seamless login for 100+ registered users, and applied SEO optimizations in Next.js that increased organic search visibility by ~30%."
   },
 ]
 

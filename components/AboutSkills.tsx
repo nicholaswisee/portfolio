@@ -32,12 +32,16 @@ import InfiniteScrollBadges from './InfiniteScrollBadges'
     { name: "C", icon: "/c-original.svg" },
     { name: "HTML5", icon: "/html5-original.svg" },
     { name: "CSS3", icon: "/css3-original.svg" },
+    { name: "Haskell", icon: "/haskell.svg" },
+    { name: "Java", icon: "/java.svg" },
     { name: "TypeScript", icon: "/typescript-original.svg" },
     { name: "JavaScript", icon: "/javascript-original.svg" },
     { name: "Python", icon: "/python-original.svg" },
     { name: "C", icon: "/c-original.svg" },
     { name: "HTML5", icon: "/html5-original.svg" },
-    { name: "CSS3", icon: "/css3-original.svg" }
+    { name: "CSS3", icon: "/css3-original.svg" },
+    { name: "Haskell", icon: "/haskell.svg" },
+    { name: "Java", icon: "/java.svg" },
 ]
 
   const toolsBadges = [

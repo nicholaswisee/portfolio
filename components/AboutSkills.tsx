@@ -34,6 +34,7 @@ import InfiniteScrollBadges from './InfiniteScrollBadges'
     { name: "CSS3", icon: "/css3-original.svg" },
     { name: "Haskell", icon: "/haskell.svg" },
     { name: "Java", icon: "/java.svg" },
+    { name: "Go", icon: "/go-original.svg" },
     { name: "TypeScript", icon: "/typescript-original.svg" },
     { name: "JavaScript", icon: "/javascript-original.svg" },
     { name: "Python", icon: "/python-original.svg" },
@@ -42,7 +43,8 @@ import InfiniteScrollBadges from './InfiniteScrollBadges'
     { name: "CSS3", icon: "/css3-original.svg" },
     { name: "Haskell", icon: "/haskell.svg" },
     { name: "Java", icon: "/java.svg" },
-]
+    { name: "Go", icon: "/go-original.svg" },
+  ]
 
   const toolsBadges = [
     { name: "Git", icon: "/git-original.svg" },

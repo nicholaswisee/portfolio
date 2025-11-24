@@ -4,7 +4,8 @@ import React from 'react'
 import { motion } from 'motion/react'
 import { Card } from './ui/card'
 import { Button } from './ui/button'
-import { Github, Instagram, Linkedin, Mail, Palette, Database, Globe, Cpu, CodeXml, Terminal, ToolCase, Wrench } from 'lucide-react'
+import Link from 'next/link'
+import { Github, Instagram, Linkedin, Mail,  CodeXml, Terminal, Wrench, Download } from 'lucide-react'
 import InfiniteScrollBadges from './InfiniteScrollBadges'
 
   const developmentBadges = [
@@ -121,7 +122,7 @@ export default function AboutSkills() {
             About Me
           </motion.h2>
           <motion.p 
-            className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4 sm:mb-6 flex-1"
+            className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4 flex-1"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -132,6 +133,17 @@ export default function AboutSkills() {
             I'm particularly interested in Software Engineering and Big Data, currently exploring
             Backend Development and Machine Learning.
           </motion.p>
+          <motion.div
+            className="mt-auto mb-3 sm:mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Link href="/CV_Nicholas_Wise.pdf" rel="noopener noreferrer" download="/CV_Nicholas_Wise.pdf">
+              <Button className='hover:bg-secondary hover:text-white transition-all duration-300 ease-out'>Download CV<Download /></Button>  
+            </Link>
+          </motion.div>
           <motion.div 
             className="mt-auto"
             initial={{ opacity: 0, y: 20 }}

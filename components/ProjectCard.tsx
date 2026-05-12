@@ -4,15 +4,12 @@ import React from 'react'
 import { motion } from 'motion/react'
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import Image from 'next/image'
-import Infest from '@/public/infest.png'
 import Link from 'next/link'
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
@@ -41,13 +38,22 @@ export default function ProjectCard( { project }: { project: Project }) {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             className="w-full"
           >
-            <Image 
-              src={project.image} 
-              alt={project.name} 
-              width={400} 
-              height={225} 
-              className='aspect-video w-full object-cover rounded-md' 
-            />
+            {project.image ? (
+              <Image 
+                src={project.image} 
+                alt={project.name} 
+                width={400} 
+                height={225} 
+                className='aspect-video w-full object-cover rounded-md' 
+              />
+            ) : (
+              <div 
+                className='aspect-video w-full rounded-md flex items-center justify-center text-white/80 text-lg font-medium'
+                style={{ background: project.gradient || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}
+              >
+                {project.name}
+              </div>
+            )}
           </motion.div>
         </CardFooter>
         <CardContent className="flex-1 flex flex-col">

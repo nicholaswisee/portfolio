@@ -7,7 +7,8 @@ export type Project = {
   name: string;
   description: string;
   url?: string;
-  image: string;
+  image?: string;
+  gradient?: string;
   badges: BadgeItem[];
   github: string;
 }

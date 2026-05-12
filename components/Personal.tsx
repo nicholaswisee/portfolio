@@ -15,24 +15,18 @@ const experiences:  Experience[] = [
     description: "Led and contributed to the development of 4 professional websites for KSEP ITB, supervising a team of 4 while actively working on design, implementation, and deployment to ensure timely, high-quality results."
   },
   {
-    title: "Backend Developer",
-    company: "OSKM ITB 2025",
-    duration: "Aug 2025",
-    description: "Developed and deployed RESTful API endpoints using Hono, Drizzle, and Zod, documented in OpenAPI format, supporting OSKM ITB 2025’s companion app with 99% uptime for 1,500+ active users.",
-  },
-  { 
-    title: "Project Officer",
-    company: "IMPACT 5.0",
-    duration: "Jan - Aug 2025",
-    description: "Managed 146 committees in organizing university admission test tutorials and an annual informatics, mathematics, and physics competition for high school students, demonstrating strong leadership and organizational skills.",
-    description2: "Coordinated 9 divisions including 17 sub-divisions across a 6-month period of intensive work, showcasing project management skills."
+    title: "Head of Website Development",
+    company: "TEDxITB 9.0",
+    duration: "Sep 2025 - Present",
+    description: "Led the end-to-end development of the TEDxITB 9.0 website, boosting publicity reach by 50%.",
+    description2: "Optimized event and merchandise workflows by implementing a checkout system handling 100+ orders, improving efficiency by 100%."
   },
   {
-    title: "Frontend Developer",
-    company: "TEDxITB 2025",
-    duration: "Nov 2024 - Apr 2025",
-    description: "Translated UI/UX designs from Figma to TailwindCSS and Next.js while providing attention to detail and design fidelity, enhancing merchandise shopping and event registration for over 200 users.",
-    description2: "Implemented secure authentication with NextAuth, enabling seamless login for 100+ registered users, and applied SEO optimizations in Next.js that increased organic search visibility by ~30%."
+    title: "Deputy Head of IT",
+    company: "Aku Masuk ITB 2026",
+    duration: "Oct 2025 - Feb 2026",
+    description: "Coordinated a team of 12 to develop a comprehensive e-commerce platform for event registration and merchandise sales, handling 7,000+ users concurrently and increasing operational efficiency by 100%.",
+    description2: "Engineered an end-to-end system using Vite + React and Hono, leveraging Docker for containerized automated deployments and reducing manual overhead by ~70%."
   },
 ]
 

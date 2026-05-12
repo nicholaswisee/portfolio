@@ -11,6 +11,21 @@ const PROJECTS_PER_PAGE = 6;
 
 const projects: Project[] = [
     {
+        name: "TEDxITB 9.0",
+        description:
+            "Official web application for TEDxITB 9.0 — ticket sales, merchandise store, event content, attendance tracking, and admin order management with QR check-in.",
+        url: "https://tedxitb.id",
+        image: "/tedx.png",
+        github: "https://github.com/nicholaswisee/tedxitb-9-0-app",
+        badges: [
+            { name: "Next.js", icon: "/nextjs-original.svg" },
+            { name: "TypeScript", icon: "/typescript-original.svg" },
+            { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
+            { name: "DrizzleORM", icon: "/drizzle-orm.webp" },
+            { name: "PostgreSQL", icon: "/postgresql-original.svg" },
+        ],
+    },
+    {
         name: "INFEST 2025",
         description:
             "The largest Investment Festival held by KSEP ITB for Indonesia.",
@@ -48,6 +63,7 @@ const projects: Project[] = [
             { name: "Go", icon: "/go-original.svg" },
             { name: "TypeScript", icon: "/typescript-original.svg" },
             { name: "React", icon: "/react-original.svg" },
+            { name: "Gin", icon: "/gin.png" },
         ],
     },
     {
@@ -123,6 +139,17 @@ const projects: Project[] = [
         badges: [
             { name: "Java", icon: "/java.svg" },
             { name: "Gradle", icon: "/gradle-original.svg" },
+        ],
+    },
+    {
+        name: "M/M/1 Markov Chain Analysis",
+        image: "/markov.png",
+        description:
+            "Analysis of steady-state behavior in M/M/1 server queues using Continuous-Time Markov Chains, generator matrices, and discrete-event simulation.",
+        github: "https://github.com/nicholaswisee/makalah-algeo",
+        badges: [
+            { name: "C++", icon: "/cplusplus-original.svg" },
+            { name: "Python", icon: "/python-original.svg" },
         ],
     },
     {

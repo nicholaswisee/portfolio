@@ -69,9 +69,9 @@ export default function ProjectCard( { project }: { project: Project }) {
             >
               <Badge 
                   variant="secondary" 
-                  className="bg-background/80 rounded-full p-2"
+                  className="bg-background/80 rounded-lg p-2 flex items-center justify-center w-9 h-9"
                 >
-                <Image alt={badge.name} src={badge.icon} width={30} height={30}/>
+                <Image alt={badge.name} src={badge.icon} width={24} height={24} className="w-6 h-6 object-contain"/>
               </Badge>
             </motion.div>
             ))}

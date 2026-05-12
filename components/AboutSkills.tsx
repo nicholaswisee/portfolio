@@ -17,26 +17,30 @@ import {
 } from "lucide-react";
 import InfiniteScrollBadges from "./InfiniteScrollBadges";
 
-const developmentBadges = [
+const frontendBadges = [
     { name: "React", icon: "/react-original.svg" },
     { name: "Next.js", icon: "/nextjs-original.svg" },
+    { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
+    { name: "Vite", icon: "/vitejs-original.svg" },
+    { name: "React Query", icon: "/react-query.webp" },
+    { name: "Zustand", icon: "/zustand.svg" },
+    { name: "Motion", icon: "/motion.png" },
+    { name: "Zod", icon: "/zod.png" },
+];
+
+const backendBadges = [
     { name: "Node.js", icon: "/nodejs-original.svg" },
     { name: "Bun", icon: "/bun-original.svg" },
     { name: "pnpm", icon: "/pnpm-original.svg" },
-    { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
-    { name: "PrismaORM", icon: "/prisma-original.svg" },
     { name: "Express", icon: "/express.webp" },
     { name: "Hono", icon: "/hono.svg" },
-    { name: "Vite", icon: "/vitejs-original.svg" },
+    { name: "PrismaORM", icon: "/prisma-original.svg" },
     { name: "DrizzleORM", icon: "/drizzle-orm.webp" },
-    { name: "React Query", icon: "/react-query.webp" },
-    { name: "Zod", icon: "/zod.png" },
-    { name: "Zustand", icon: "/zustand.svg" },
-    { name: "Motion", icon: "/motion.png" },
-    { name: "Fiber ", icon: "/fiber-original.svg" },
+    { name: "Fiber", icon: "/fiber-original.svg" },
     { name: "Gin", icon: "/gin.png" },
     { name: "Django", icon: "/django.svg" },
     { name: "FastAPI", icon: "/fastapi.svg" },
+    { name: "tRPC", icon: "/trpc-original.svg" },
 ];
 
 const programmingLanguages = [
@@ -226,7 +230,13 @@ export default function AboutSkills() {
                                 <CodeXml className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
                                 Web Development
                             </h3>
-                            <InfiniteScrollBadges badges={developmentBadges} />
+                            <div className="space-y-2">
+                                <InfiniteScrollBadges badges={frontendBadges} />
+                                <InfiniteScrollBadges
+                                    badges={backendBadges}
+                                    direction="right"
+                                />
+                            </div>
                         </div>
                         <div>
                             <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
@@ -235,7 +245,6 @@ export default function AboutSkills() {
                             </h3>
                             <InfiniteScrollBadges
                                 badges={programmingLanguages}
-                                direction="right"
                             />
                         </div>
                         <div>
@@ -243,7 +252,10 @@ export default function AboutSkills() {
                                 <Wrench className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
                                 Tools & Databases
                             </h3>
-                            <InfiniteScrollBadges badges={toolsBadges} />
+                            <InfiniteScrollBadges
+                                badges={toolsBadges}
+                                direction="right"
+                            />
                         </div>
                     </motion.div>
                 </Card>

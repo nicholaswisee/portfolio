@@ -1,265 +1,213 @@
 "use client";
 
-import React from "react";
-import { motion } from "motion/react";
-import { Card } from "./ui/card";
+import { motion, useReducedMotion } from "motion/react";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import {
-    Github,
-    Instagram,
-    Linkedin,
-    Mail,
-    CodeXml,
-    Terminal,
-    Wrench,
-    Download,
-} from "lucide-react";
-import InfiniteScrollBadges from "./InfiniteScrollBadges";
+import Image from "next/image";
+import { Download, Github, Mail } from "lucide-react";
+import { useState } from "react";
+import { techStackCategories } from "@/content/portfolio";
 
-const frontendBadges = [
-    { name: "React", icon: "/react-original.svg" },
-    { name: "Next.js", icon: "/nextjs-original.svg" },
-    { name: "TailwindCSS", icon: "/tailwindcss-original.svg" },
-    { name: "Vite", icon: "/vitejs-original.svg" },
-    { name: "React Query", icon: "/react-query.webp" },
-    { name: "Zustand", icon: "/zustand.svg" },
-    { name: "Motion", icon: "/motion.png" },
-    { name: "Zod", icon: "/zod.png" },
-];
+function TechIcon({ item }: { item: { name: string; icon?: string } }) {
+    if (!item.icon) return null;
 
-const backendBadges = [
-    { name: "Node.js", icon: "/nodejs-original.svg" },
-    { name: "Bun", icon: "/bun-original.svg" },
-    { name: "pnpm", icon: "/pnpm-original.svg" },
-    { name: "Express", icon: "/express.webp" },
-    { name: "Hono", icon: "/hono.svg" },
-    { name: "PrismaORM", icon: "/prisma-original.svg" },
-    { name: "DrizzleORM", icon: "/drizzle-orm.webp" },
-    { name: "Fiber", icon: "/fiber-original.svg" },
-    { name: "Gin", icon: "/gin.png" },
-    { name: "Django", icon: "/django.svg" },
-    { name: "FastAPI", icon: "/fastapi.svg" },
-    { name: "tRPC", icon: "/trpc-original.svg" },
-];
-
-const programmingLanguages = [
-    { name: "TypeScript", icon: "/typescript-original.svg" },
-    { name: "JavaScript", icon: "/javascript-original.svg" },
-    { name: "Python", icon: "/python-original.svg" },
-    { name: "C", icon: "/c-original.svg" },
-    { name: "HTML5", icon: "/html5-original.svg" },
-    { name: "CSS3", icon: "/css3-original.svg" },
-    { name: "Haskell", icon: "/haskell.svg" },
-    { name: "Java", icon: "/java.svg" },
-    { name: "Go", icon: "/go-original.svg" },
-    { name: "TypeScript", icon: "/typescript-original.svg" },
-    { name: "JavaScript", icon: "/javascript-original.svg" },
-    { name: "Python", icon: "/python-original.svg" },
-    { name: "C", icon: "/c-original.svg" },
-    { name: "HTML5", icon: "/html5-original.svg" },
-    { name: "CSS3", icon: "/css3-original.svg" },
-    { name: "Haskell", icon: "/haskell.svg" },
-    { name: "Java", icon: "/java.svg" },
-    { name: "Go", icon: "/go-original.svg" },
-];
-
-const toolsBadges = [
-    { name: "Git", icon: "/git-original.svg" },
-    { name: "GitHub", icon: "/github.svg" },
-    { name: "Docker", icon: "/docker.svg" },
-    { name: "Postman", icon: "/postman-original.svg" },
-    { name: "Figma", icon: "/figma-original.svg" },
-    { name: "Supabase", icon: "/supabase-original.svg" },
-    { name: "MongoDB", icon: "/mongodb-original.svg" },
-    { name: "MySQL", icon: "/mysql.svg" },
-    { name: "PostgreSQL", icon: "/postgresql-original.svg" },
-    { name: "Cloudflare R2", icon: "/cloudflare-original.svg" },
-    { name: "Azure", icon: "/azure-original.svg" },
-];
-
-const ButtonSections = () => {
     return (
-        <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
-            <Button
-                variant="outline"
-                size="sm"
-                className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
-                onClick={() =>
-                    window.open("https://github.com/nicholaswisee", "_blank")
-                }
-            >
-                <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="inline">GitHub</span>
-            </Button>
-            <Button
-                variant="outline"
-                size="sm"
-                className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
-                onClick={() =>
-                    window.open(
-                        "https://www.linkedin.com/in/nicholaswises/",
-                        "_blank",
-                    )
-                }
-            >
-                <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="inline">LinkedIn</span>
-            </Button>
-            <Button
-                variant="outline"
-                size="sm"
-                className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
-                onClick={() => window.open("mailto:nicholasaragih@gmail.com")}
-            >
-                <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="inline">Email</span>
-            </Button>
-            <Button
-                variant="outline"
-                size="sm"
-                className="border-secondary/50 hover:border-secondary hover:bg-secondary/10 bg-transparent text-xs sm:text-sm sm:flex-none min-w-0"
-                onClick={() =>
-                    window.open(
-                        "https://www.instagram.com/nicholaswises/",
-                        "_blank",
-                    )
-                }
-            >
-                <Instagram className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
-                <span className="sm:inline">Instagram</span>
-            </Button>
+        <Image
+            src={item.icon}
+            alt=""
+            width={24}
+            height={24}
+            className="h-5 w-5 shrink-0"
+            aria-hidden="true"
+        />
+    );
+}
+
+function MarqueeStrip({
+    category,
+    categoryIndex,
+    isPaused,
+}: {
+    category: (typeof techStackCategories)[number];
+    categoryIndex: number;
+    isPaused: boolean;
+}) {
+    const prefersReducedMotion = useReducedMotion();
+    const splitAt = Math.ceil(category.items.length / 2);
+    const lanes =
+        category.items.length > 10
+            ? [category.items.slice(0, splitAt), category.items.slice(splitAt)]
+            : [category.items];
+    const precedingLaneCount = techStackCategories
+        .slice(0, categoryIndex)
+        .reduce(
+            (count, previousCategory) =>
+                count + (previousCategory.items.length > 10 ? 2 : 1),
+            0,
+        );
+
+    return (
+        <div className="space-y-1.5" data-stack={category.title}>
+            <p className="text-xs font-semibold uppercase tracking-wider text-oxidized-teal/70">
+                {category.title}
+            </p>
+            {lanes.map((lane, laneIndex) => {
+                const movesRight = (precedingLaneCount + laneIndex) % 2 === 1;
+                const doubled = [...lane, ...lane];
+                return (
+                    <div
+                        key={`${category.title}-${laneIndex}`}
+                        className="marquee-viewport"
+                        data-stack-row="true"
+                        data-stack-direction={movesRight ? "right" : "left"}
+                    >
+                        <div
+                            className={`marquee-track ${movesRight ? "marquee-track--reverse" : ""}`}
+                            style={
+                                prefersReducedMotion || isPaused
+                                    ? { animation: "none" }
+                                    : undefined
+                            }
+                        >
+                            {doubled.map((item, i) => (
+                                <span
+                                    key={`${item.name}-${i}`}
+                                    className="inline-flex items-center gap-1.5 rounded-full border border-paper-mist/10 bg-archive-ink/60 px-2.5 py-1 text-xs text-paper-mist/80"
+                                    aria-hidden={
+                                        i >= lane.length ? "true" : undefined
+                                    }
+                                    data-skill-fallback={
+                                        item.icon ? undefined : "text"
+                                    }
+                                >
+                                    <TechIcon item={item} />
+                                    {item.name}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                );
+            })}
         </div>
     );
-};
+}
 
 export default function AboutSkills() {
-    return (
-        <div
-            className="mx-auto px-2 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 lg:items-stretch"
-            id="About"
-        >
-            <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.3 }}
-            >
-                <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col gap-3 md:gap-5 justify-start card-hover-scale">
-                    <motion.h2
-                        className="text-2xl sm:text-3xl md:text-4xl font-bold text-glow"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        About Me
-                    </motion.h2>
-                    <motion.p
-                        className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4 flex-1"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        viewport={{ once: true }}
-                    >
-                        I'm a passionate learner with 2+ years of experience in
-                        full-stack development. My passion to create is fueled
-                        by my curiosity in technology and how I can use it to
-                        solve real-world problems. I'm particularly interested
-                        in Software Engineering and Big Data, currently
-                        exploring Backend Development and Machine Learning.
-                    </motion.p>
-                    <motion.div
-                        className="mt-auto mb-3 sm:mb-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <Link
-                            href="/CV_Nicholas_Wise.pdf"
-                            rel="noopener noreferrer"
-                            download="/CV_Nicholas_Wise.pdf"
-                        >
-                            <Button className="hover:bg-secondary hover:text-white transition-all duration-300 ease-out">
-                                Download CV
-                                <Download />
-                            </Button>
-                        </Link>
-                    </motion.div>
-                    <motion.div
-                        className="mt-auto"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-glow mb-3 sm:mb-4">
-                            Connect With Me!
-                        </h2>
-                        <ButtonSections />
-                    </motion.div>
-                </Card>
-            </motion.div>
+    const prefersReducedMotion = useReducedMotion();
+    const [isPaused, setIsPaused] = useState(false);
 
-            <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.3 }}
-            >
-                <Card className="p-4 sm:p-6 md:p-8 h-auto lg:h-full flex flex-col justify-start card-hover-scale overflow-hidden">
-                    <motion.h2
-                        className="text-2xl sm:text-3xl md:text-4xl font-bold text-glow"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        viewport={{ once: true }}
-                    >
-                        Tools and Technologies
-                    </motion.h2>
+    return (
+        <section
+            id="about"
+            className="section-block bg-research-field"
+            aria-labelledby="about-title"
+            data-about-layout="merged"
+        >
+            <div className="site-container">
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12">
                     <motion.div
-                        className="space-y-3 sm:space-y-4 md:space-y-6 flex-1"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        viewport={{ once: true }}
+                        initial={
+                            prefersReducedMotion
+                                ? { opacity: 1 }
+                                : { opacity: 0, x: -30 }
+                        }
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="min-w-0"
                     >
-                        <div>
-                            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-                                <CodeXml className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
-                                Web Development
-                            </h3>
-                            <div className="space-y-2">
-                                <InfiniteScrollBadges badges={frontendBadges} />
-                                <InfiniteScrollBadges
-                                    badges={backendBadges}
-                                    direction="right"
-                                />
-                            </div>
+                        <h2 id="about-title" className="section-title mb-5">
+                            About
+                        </h2>
+                        <div className="space-y-3 text-paper-mist/80">
+                            <p>
+                                ITB Informatics Junior focused on scalable
+                                software infrastructure, event-driven
+                                architectures, and distributed systems. I've
+                                always been intrigued by how large scale systems
+                                impact globally.
+                            </p>
+                            <p>
+                                I ship production platforms, commit to academic
+                                research, and build systems from the ground up —
+                                from database schema and API design to
+                                distributed architecture.
+                            </p>
                         </div>
-                        <div>
-                            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-                                <Terminal className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
-                                Languages
-                            </h3>
-                            <InfiniteScrollBadges
-                                badges={programmingLanguages}
-                            />
-                        </div>
-                        <div>
-                            <h3 className="text-sm sm:text-base font-semibold mb-2 sm:mb-3 flex items-center">
-                                <Wrench className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-secondary text-glow pulse" />
-                                Tools & Databases
-                            </h3>
-                            <InfiniteScrollBadges
-                                badges={toolsBadges}
-                                direction="right"
-                            />
+
+                        <div className="mt-6 flex flex-wrap gap-2.5">
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                asChild
+                                className="border-paper-mist/15 bg-transparent text-paper-mist hover:bg-paper-mist/10"
+                            >
+                                <a href="https://github.com/nicholaswisee">
+                                    <Github className="mr-2 h-4 w-4" />
+                                    GitHub
+                                </a>
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                asChild
+                                className="border-paper-mist/15 bg-transparent text-paper-mist hover:bg-paper-mist/10"
+                            >
+                                <a href="mailto:nicholasaragih@gmail.com">
+                                    <Mail className="mr-2 h-4 w-4" />
+                                    Email
+                                </a>
+                            </Button>
+                            <Button
+                                asChild
+                                variant="outline"
+                                size="sm"
+                                className="border-oxidized-teal/40 bg-transparent text-oxidized-teal hover:bg-oxidized-teal/10"
+                            >
+                                <Link href="/CV_Nicholas_Wise.pdf" download>
+                                    Download CV
+                                    <Download className="ml-2 h-4 w-4" />
+                                </Link>
+                            </Button>
                         </div>
                     </motion.div>
-                </Card>
-            </motion.div>
-        </div>
+
+                    <motion.div
+                        initial={
+                            prefersReducedMotion
+                                ? { opacity: 1 }
+                                : { opacity: 0, x: 30 }
+                        }
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="min-w-0"
+                    >
+                        <p className="section-eyebrow mb-3">Capabilities</p>
+                        <button
+                            type="button"
+                            onClick={() => setIsPaused((paused) => !paused)}
+                            aria-pressed={isPaused}
+                            data-marquee-toggle="true"
+                            className="mb-3 text-xs font-medium text-paper-mist/60 underline decoration-paper-mist/20 underline-offset-4 hover:text-oxidized-teal"
+                        >
+                            {isPaused
+                                ? "Resume tech motion"
+                                : "Pause tech motion"}
+                        </button>
+                        <div className="space-y-4 border-t border-paper-mist/10 pt-4">
+                            {techStackCategories.map((cat, index) => (
+                                <MarqueeStrip
+                                    key={cat.title}
+                                    category={cat}
+                                    categoryIndex={index}
+                                    isPaused={isPaused}
+                                />
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
     );
 }

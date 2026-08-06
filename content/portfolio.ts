@@ -540,6 +540,20 @@ export const lifeExperiences: LifeExperience[] = [
         imageAlt: "Rings of PTD KSEP",
         aspectRatio: "16/9",
     },
+    {
+        title: "Swim.",
+        place: "Aquarium",
+        image: "/life/aqua.webp",
+        imageAlt: "Aquarium",
+        aspectRatio: "16/9",
+    },
+    {
+        title: "Sonics.",
+        place: "PTD KSEP",
+        image: "/life/tunes.webp",
+        imageAlt: "Albums",
+        aspectRatio: "3/2",
+    },
 ];
 
 export const navItems: { name: string; link: string }[] = [

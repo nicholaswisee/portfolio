@@ -113,7 +113,7 @@ export default function Hero() {
                     <div className="relative">
                         <div className="absolute inset-0 rounded-full bg-oxidized-teal/20 blur-3xl" />
                         <Image
-                            src="/wise.webp"
+                            src="/gua.png"
                             alt="Portrait of Nicholas Wise Saragih Sumbayak"
                             width={320}
                             height={320}

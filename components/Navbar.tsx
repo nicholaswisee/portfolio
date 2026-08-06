@@ -1,49 +1,29 @@
 "use client";
+
 import {
   Navbar,
   NavBody,
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
+import { navItems } from "@/content/portfolio";
 import { useState } from "react";
 
 export function Nav() {
-  const navItems = [
-    {
-      name: "Home",
-      link: "#",
-    },
-    {
-      name: "About Me",
-      link: "#About",
-    },
-    {
-      name: "Projects",
-      link: "#Projects",
-    },
-    {
-      name: "Personal",
-      link: "#Personal",
-    }
-  ];
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative w-full dark">
+    <header className="relative w-full">
       <Navbar>
-        {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
         </NavBody>
 
-        {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
             <NavbarLogo />
@@ -62,16 +42,14 @@ export function Nav() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="block w-full rounded-md px-4 py-3 text-paper-mist/80 hover:bg-paper-mist/10 hover:text-paper-mist"
               >
-                <span className="block">{item.name}</span>
+                {item.name}
               </a>
             ))}
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-
-      {/* Navbar */}
-    </div>
+    </header>
   );
 }

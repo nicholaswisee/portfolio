@@ -13,7 +13,7 @@ const checks = [
   ["exactly three featured projects", count(/data-featured="true"/g) === 3],
   ["archive projects render as rows", count(/data-archive="true"/g) >= 10],
   ["research is text-only", html.includes('data-research-layout="text-only"')],
-  ["Life gallery renders nine photos", count(/data-life="figure"/g) === 9],
+  ["Life gallery renders eleven photos", count(/data-life="figure"/g) === 11],
   ["Life placeholder text removed", !html.includes("coming soon")],
   ["hero facets removed", !html.includes(">Build</a>") && !html.includes(">Study</a>") && !html.includes(">Life</a>")],
   ["missing skill icons render as text-only pills", count(/data-skill-fallback="text"/g) > 0],

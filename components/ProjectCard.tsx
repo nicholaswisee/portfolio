@@ -9,7 +9,7 @@ import { ExternalLink, Github } from "lucide-react";
 export default function ProjectCard({ project }: { project: WorkItem }) {
   return (
     <Card className="group flex h-full flex-col overflow-hidden border-paper-mist/10 bg-slate-field transition-colors hover:border-paper-mist/20">
-      <div className="relative aspect-video overflow-hidden bg-archive-ink">
+      <div className="relative aspect-video overflow-hidden rounded-xl bg-archive-ink">
         {project.image ? (
           <Image
             src={project.image}

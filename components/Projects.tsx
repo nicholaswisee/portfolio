@@ -28,7 +28,7 @@ export default function Projects() {
             aria-labelledby="work-title"
         >
             <div className="site-container">
-                <div className="mb-10 md:mb-14">
+                <div className="mb-12 md:mb-16">
                     <h2 id="work-title" className="section-title">
                         Featured work
                     </h2>
@@ -65,7 +65,7 @@ export default function Projects() {
                         onClick={() => setArchiveOpen((open) => !open)}
                         aria-expanded={archiveOpen}
                         aria-controls="project-archive"
-                        className="group flex w-full items-center justify-between rounded-lg border border-paper-mist/10 bg-slate-field px-5 py-4 text-left transition-colors hover:border-paper-mist/20 hover:bg-slate-field/80"
+                        className="group flex w-full items-center justify-between rounded-xl border border-paper-mist/10 bg-slate-field/80 px-5 py-4 text-left transition-colors hover:border-paper-mist/20 hover:bg-slate-field"
                     >
                         <span className="font-display text-lg font-medium text-paper-mist sm:text-xl">
                             Browse the project archive
@@ -94,7 +94,7 @@ export default function Projects() {
                                             <li
                                                 key={project.name}
                                                 data-archive="true"
-                                                className="flex flex-col rounded-lg border border-paper-mist/10 bg-slate-field/60 p-5 transition-colors hover:border-paper-mist/20 hover:bg-slate-field"
+                                                className="flex flex-col rounded-xl border border-paper-mist/10 bg-slate-field/60 p-5 transition-colors hover:border-paper-mist/20 hover:bg-slate-field"
                                             >
                                                 <div className="flex items-start gap-3">
                                                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-paper-mist/10 text-oxidized-teal/70">

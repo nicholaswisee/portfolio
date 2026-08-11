@@ -37,7 +37,7 @@ export default function Research() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="rounded-lg border border-paper-mist/10 bg-slate-field p-6 sm:p-8"
+                            className="rounded-xl border border-paper-mist/10 bg-slate-field p-6 sm:p-8 md:p-10"
                         >
                             <p className="text-sm text-paper-mist/60">
                                 {item.context}
@@ -48,7 +48,7 @@ export default function Research() {
 
                             <dl className="mt-5 space-y-3">
                                 <div>
-                                    <dt className="text-xs font-semibold uppercase tracking-wider text-oxidized-teal">
+                                    <dt className="section-eyebrow">
                                         Problem
                                     </dt>
                                     <dd className="mt-1 text-paper-mist/80">
@@ -56,7 +56,7 @@ export default function Research() {
                                     </dd>
                                 </div>
                                 <div>
-                                    <dt className="text-xs font-semibold uppercase tracking-wider text-oxidized-teal">
+                                    <dt className="section-eyebrow">
                                         Method
                                     </dt>
                                     <dd className="mt-1 text-paper-mist/80">

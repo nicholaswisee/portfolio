@@ -71,22 +71,17 @@ export const Navbar = ({ children, className }: NavbarProps) => {
 
 export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
-    <motion.div
-      animate={{
-        backdropFilter: visible ? "blur(12px)" : "none",
-        backgroundColor: visible ? "rgba(17, 26, 29, 0.85)" : "rgba(17, 26, 29, 0.6)",
-        boxShadow: visible
-          ? "0 1px 0 0 rgba(88, 166, 166, 0.15) inset"
-          : "0 1px 0 0 rgba(231, 236, 232, 0.06) inset",
-      }}
-      transition={{ type: "spring", stiffness: 200, damping: 50 }}
+    <div
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full border border-paper-mist/10 px-4 py-2 lg:flex",
+        "glass-surface relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full border border-paper-mist/10 px-4 py-2 lg:flex",
+        visible
+          ? "backdrop-blur-xl bg-archive-ink/[0.88] shadow-[0_1px_0_0_rgba(88,166,166,0.15)_inset]"
+          : "backdrop-blur-md bg-archive-ink/[0.65] shadow-[0_1px_0_0_rgba(231,236,232,0.06)_inset]",
         className,
       )}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
@@ -107,7 +102,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           href={item.link}
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-paper-mist/80 hover:text-paper-mist"
+          className="relative px-4 py-2 text-paper-mist/80 hover:text-paper-mist motion-safe:active:scale-[0.98]"
         >
           {hovered === idx && (
             <motion.div
@@ -125,19 +120,17 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 
 export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
-    <motion.div
-      animate={{
-        backdropFilter: visible ? "blur(12px)" : "none",
-        backgroundColor: visible ? "rgba(17, 26, 29, 0.85)" : "rgba(17, 26, 29, 0.6)",
-      }}
-      transition={{ type: "spring", stiffness: 200, damping: 50 }}
+    <div
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between rounded-2xl border border-paper-mist/10 px-0 py-2 lg:hidden",
+        "glass-surface relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between rounded-2xl border border-paper-mist/10 px-0 py-2 lg:hidden",
+        visible
+          ? "backdrop-blur-xl bg-archive-ink/[0.88]"
+          : "backdrop-blur-md bg-archive-ink/[0.65]",
         className,
       )}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
@@ -196,7 +189,7 @@ export const MobileNavToggle = ({
       onClick={onClick}
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
-      className="rounded-md p-2 text-paper-mist hover:bg-paper-mist/10"
+      className="rounded-md p-2 text-paper-mist hover:bg-paper-mist/10 motion-safe:active:scale-[0.98]"
     >
       {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
     </button>

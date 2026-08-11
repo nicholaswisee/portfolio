@@ -40,7 +40,7 @@ export default function LifeExperiences() {
                                 duration: 0.5,
                                 delay: prefersReducedMotion ? 0 : idx * 0.1,
                             }}
-                            className="life-collage-item group relative overflow-hidden rounded-lg bg-slate-field"
+                            className="life-collage-item group relative overflow-hidden rounded-xl bg-slate-field"
                         >
                             <Image
                                 src={item.image}

@@ -31,22 +31,14 @@ export default function Hero() {
             className="site-container flex min-h-[calc(100vh-6rem)] flex-col justify-center pt-24 pb-12 md:pt-28 md:pb-20"
             aria-label="Introduction"
         >
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-                <div className="order-2 lg:order-1">
-                    <motion.p
-                        custom={0}
-                        initial="hidden"
-                        animate="visible"
-                        variants={entrance}
-                        className="section-eyebrow mb-4"
-                    ></motion.p>
-
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+                <div className="max-w-3xl">
                     <motion.h1
                         custom={0.1}
                         initial="hidden"
                         animate="visible"
                         variants={entrance}
-                        className="font-display text-4xl font-medium leading-[1.1] text-paper-mist sm:text-5xl md:text-6xl lg:text-7xl"
+                        className="font-display text-4xl font-medium leading-[1.1] leading-[var(--leading-display)] text-paper-mist sm:text-5xl md:text-6xl lg:text-7xl"
                     >
                         Nicholas Wise Saragih Sumbayak
                     </motion.h1>
@@ -108,10 +100,10 @@ export default function Hero() {
                     initial="hidden"
                     animate="visible"
                     variants={entrance}
-                    className="order-1 flex justify-center lg:order-2"
+                    className="flex justify-center"
                 >
                     <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-oxidized-teal/20 blur-3xl" />
+                        <div className="absolute inset-0 rounded-full bg-oxidized-teal/15 blur-3xl" />
                         <Image
                             src="/gua.png"
                             alt="Portrait of Nicholas Wise Saragih Sumbayak"
@@ -119,7 +111,7 @@ export default function Hero() {
                             height={320}
                             priority
                             sizes="(max-width: 768px) 200px, (max-width: 1024px) 260px, 320px"
-                            className="relative h-52 w-52 rounded-full border-2 border-oxidized-teal/30 object-cover shadow-xl sm:h-64 sm:w-64 lg:h-80 lg:w-80"
+                            className="relative h-52 w-52 rounded-full border-2 border-oxidized-teal/30 object-cover shadow-xl sm:h-64 sm:w-64 lg:h-72 lg:w-72"
                         />
                     </div>
                 </motion.div>

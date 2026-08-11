@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="border-t border-paper-mist/10 bg-slate-field">
-      <div className="site-container py-16 md:py-24">
+      <div className="site-container py-20 md:py-28">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-end">
           <div>
             <h2 className="section-title mb-4">Let&apos;s connect</h2>
@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 md:items-end">
             <a
               href="mailto:nicholasaragih@gmail.com"
-              className="inline-flex items-center gap-2 text-oxidized-teal hover:text-paper-mist hover:underline"
+              className="inline-flex items-center gap-2 text-oxidized-teal hover:text-paper-mist hover:underline motion-safe:transition-colors motion-safe:active:scale-[0.98]"
             >
               <Mail className="h-4 w-4" />
               nicholasaragih@gmail.com
@@ -27,7 +27,7 @@ export default function Footer() {
                 href="https://github.com/nicholaswisee"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist"
+                className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist motion-safe:transition-colors motion-safe:active:scale-[0.98]"
               >
                 <Github className="h-4 w-4" />
                 GitHub
@@ -36,7 +36,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/in/nicholaswises/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist"
+                className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist motion-safe:transition-colors motion-safe:active:scale-[0.98]"
               >
                 <Linkedin className="h-4 w-4" />
                 LinkedIn
@@ -44,7 +44,7 @@ export default function Footer() {
               <a
                 href="/CV_Nicholas_Wise.pdf"
                 download
-                className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist"
+                className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist motion-safe:transition-colors motion-safe:active:scale-[0.98]"
               >
                 <FileText className="h-4 w-4" />
                 CV

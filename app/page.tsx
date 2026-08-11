@@ -7,7 +7,7 @@ import LifeExperiences from "@/components/LifeExperiences";
 
 export default function Home() {
   return (
-    <main id="main-content">
+    <main id="main-content" tabIndex={-1} className="outline-none">
       <Hero />
       <AboutSkills />
       <Projects />

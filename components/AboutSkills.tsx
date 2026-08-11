@@ -72,7 +72,7 @@ function MarqueeStrip({
                             {doubled.map((item, i) => (
                                 <span
                                     key={`${item.name}-${i}`}
-                                    className="inline-flex items-center gap-1.5 rounded-full border border-paper-mist/10 bg-archive-ink/60 px-2.5 py-1 text-xs text-paper-mist/80"
+                                    className="inline-flex items-center gap-1.5 rounded-full border border-paper-mist/10 bg-archive-ink/50 px-3 py-1.5 text-xs text-paper-mist/80"
                                     aria-hidden={
                                         i >= lane.length ? "true" : undefined
                                     }
@@ -119,7 +119,7 @@ export default function AboutSkills() {
                         <h2 id="about-title" className="section-title mb-5">
                             About
                         </h2>
-                        <div className="space-y-3 text-paper-mist/80">
+                        <div className="space-y-3 leading-relaxed text-paper-mist/80">
                             <p>
                                 ITB Informatics Junior focused on scalable
                                 software infrastructure, event-driven
@@ -195,7 +195,7 @@ export default function AboutSkills() {
                                 ? "Resume tech motion"
                                 : "Pause tech motion"}
                         </button>
-                        <div className="space-y-4 border-t border-paper-mist/10 pt-4">
+                        <div className="space-y-4 section-rule pt-6">
                             {techStackCategories.map((cat, index) => (
                                 <MarqueeStrip
                                     key={cat.title}

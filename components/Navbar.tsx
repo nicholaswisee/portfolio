@@ -42,7 +42,7 @@ export function Nav() {
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full rounded-md px-4 py-3 text-paper-mist/80 hover:bg-paper-mist/10 hover:text-paper-mist"
+                className="block w-full rounded-md px-4 py-3 text-paper-mist/80 hover:bg-paper-mist/10 hover:text-paper-mist motion-safe:active:scale-[0.98]"
               >
                 {item.name}
               </a>

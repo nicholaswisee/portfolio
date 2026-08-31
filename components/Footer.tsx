@@ -17,7 +17,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 md:items-end">
             <a
               href="mailto:nicholasaragih@gmail.com"
-              className="inline-flex items-center gap-2 text-oxidized-teal hover:text-paper-mist hover:underline motion-safe:transition-colors motion-safe:active:scale-[0.98]"
+              className="inline-flex items-center gap-2 text-paper-mist/80 hover:text-paper-mist hover:underline motion-safe:transition-colors motion-safe:active:scale-[0.98]"
             >
               <Mail className="h-4 w-4" />
               nicholasaragih@gmail.com

@@ -128,10 +128,10 @@ export default function AboutSkills() {
                                 impact globally.
                             </p>
                             <p>
-                                I ship production platforms, commit to academic
-                                research, and build systems from the ground up —
-                                from database schema and API design to
-                                distributed architecture.
+                                I ship production platforms, design
+                                user-friendly products, and build systems from
+                                the ground up — from database schema and API
+                                design to distributed architecture.
                             </p>
                         </div>
 

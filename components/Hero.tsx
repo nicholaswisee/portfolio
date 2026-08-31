@@ -50,8 +50,8 @@ export default function Hero() {
                         variants={entrance}
                         className="mt-6 max-w-2xl text-lg leading-relaxed text-paper-mist/80 sm:text-xl md:text-2xl"
                     >
-                        I build scalable software infrastructure, and collect
-                        experiences worth learning from.
+                        I build scalable software infrastructure and make the
+                        most out of every opportunity.
                     </motion.p>
 
                     <motion.p
@@ -61,9 +61,10 @@ export default function Hero() {
                         variants={entrance}
                         className="mt-4 max-w-2xl text-base leading-relaxed text-paper-mist/60 sm:text-lg"
                     >
-                        From event-driven architectures and distributed systems
-                        to algorithm papers and operating systems, each project
-                        teaches me to measure results honestly.
+                        From full-stack webapps and algorithmic solvers to
+                        distributed systems and event-driven architectures, I
+                        love being a jack of all trades; a generalist, if you
+                        will.
                     </motion.p>
 
                     <motion.div
@@ -105,13 +106,13 @@ export default function Hero() {
                     <div className="relative">
                         <div className="absolute inset-0 rounded-full bg-oxidized-teal/15 blur-3xl" />
                         <Image
-                            src="/gua.png"
+                            src="/gua.webp"
                             alt="Portrait of Nicholas Wise Saragih Sumbayak"
-                            width={320}
-                            height={320}
+                            width={500}
+                            height={500}
                             priority
                             sizes="(max-width: 768px) 200px, (max-width: 1024px) 260px, 384px"
-                            className="relative h-52 w-52 rounded-full border-2 border-oxidized-teal/30 object-cover shadow-xl sm:h-64 sm:w-64 lg:h-72 lg:w-72"
+                            className="relative h-52 w-52 rounded-full border-2 border-oxidized-teal/30 object-cover shadow-xl sm:h-64 sm:w-64 lg:h-96 lg:w-96"
                         />
                     </div>
                 </motion.div>

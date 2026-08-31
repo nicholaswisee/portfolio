@@ -92,7 +92,7 @@ export default function Research() {
                                                 ? "noopener noreferrer"
                                                 : undefined
                                         }
-                                        className="text-sm text-oxidized-teal hover:text-paper-mist hover:underline"
+                                        className="text-sm text-paper-mist/80 hover:text-paper-mist hover:underline"
                                     >
                                         {link.label}
                                     </a>

@@ -435,7 +435,7 @@ export const projectArchive: WorkItem[] = [
 export const researchItems: ResearchItem[] = [
     {
         title: "Dynamic Programming for Optimal Model Partitioning in Pipeline-Parallel LLM Training",
-        context: "IF2211 Algorithm Strategy, ITB, 2026",
+        context: "IF2211 Algorithm Strategy",
         problem:
             "Split contiguous transformer layers across pipeline stages to minimize the slowest stage's compute cost.",
         method: "Exact Bellman-style minimax dynamic programming with backpointer reconstruction; naive O(KL²) and divide-and-conquer O(KL log L) implementations.",
@@ -456,7 +456,7 @@ export const researchItems: ResearchItem[] = [
     },
     {
         title: "M/M/1 Queue Analysis with Markov Chains and Eigenvalues",
-        context: "IF2123 Linear and Geometrical Algebra, ITB, 2025",
+        context: "IF2123 Linear and Geometrical Algebra",
         problem:
             "Characterize the steady state of a continuous-time M/M/1 queue and validate the analytical model independently.",
         method: "Generator-matrix null-space solution using hand-written Gaussian elimination, paired with a C++17 discrete-event simulator.",

@@ -48,7 +48,7 @@ function MarqueeStrip({
 
     return (
         <div className="space-y-1.5" data-stack={category.title}>
-            <p className="text-xs font-semibold uppercase tracking-wider text-oxidized-teal/70">
+            <p className="text-xs font-semibold uppercase tracking-wider text-paper-mist/60">
                 {category.title}
             </p>
             {lanes.map((lane, laneIndex) => {
@@ -128,10 +128,10 @@ export default function AboutSkills() {
                                 impact globally.
                             </p>
                             <p>
-                                I ship production platforms, commit to academic
-                                research, and build systems from the ground up —
-                                from database schema and API design to
-                                distributed architecture.
+                                I ship production platforms, design
+                                user-friendly products, and build systems from
+                                the ground up — from database schema and API
+                                design to distributed architecture.
                             </p>
                         </div>
 
@@ -162,7 +162,7 @@ export default function AboutSkills() {
                                 asChild
                                 variant="outline"
                                 size="sm"
-                                className="border-oxidized-teal/40 bg-transparent text-oxidized-teal hover:bg-oxidized-teal/10"
+                                className="border-oxidized-teal/40 bg-transparent text-paper-mist hover:bg-oxidized-teal/10"
                             >
                                 <Link href="/CV_Nicholas_Wise.pdf" download>
                                     Download CV
@@ -189,7 +189,7 @@ export default function AboutSkills() {
                             onClick={() => setIsPaused((paused) => !paused)}
                             aria-pressed={isPaused}
                             data-marquee-toggle="true"
-                            className="mb-3 text-xs font-medium text-paper-mist/60 underline decoration-paper-mist/20 underline-offset-4 hover:text-oxidized-teal"
+                            className="mb-3 text-xs font-medium text-paper-mist/60 underline decoration-paper-mist/20 underline-offset-4 hover:text-paper-mist"
                         >
                             {isPaused
                                 ? "Resume tech motion"

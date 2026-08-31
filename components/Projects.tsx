@@ -162,7 +162,7 @@ export default function Projects() {
                                                                                 ? "noopener noreferrer"
                                                                                 : undefined
                                                                         }
-                                                                        className="inline-flex items-center gap-1 text-xs text-oxidized-teal transition-colors hover:text-paper-mist"
+                                                                        className="inline-flex items-center gap-1 text-xs text-paper-mist/80 transition-colors hover:text-paper-mist"
                                                                     >
                                                                         <Icon className="h-3.5 w-3.5" />
                                                                         {

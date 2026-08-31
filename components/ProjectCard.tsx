@@ -30,7 +30,7 @@ export default function ProjectCard({ project }: { project: WorkItem }) {
         <CardTitle className="font-display text-2xl font-medium text-paper-mist">
           {project.name}
         </CardTitle>
-        <p className="mt-1 text-sm text-annotation-amber">{project.role}</p>
+        <p className="mt-1 text-sm text-paper-mist/60">{project.role}</p>
         <p className="mt-3 flex-1 text-sm leading-relaxed text-paper-mist/75">
           {project.outcome}
         </p>
@@ -58,7 +58,7 @@ export default function ProjectCard({ project }: { project: WorkItem }) {
                 href={link.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener noreferrer" : undefined}
-                className="inline-flex items-center gap-1.5 text-sm text-oxidized-teal hover:text-paper-mist hover:underline"
+                className="inline-flex items-center gap-1.5 text-sm text-paper-mist/80 hover:text-paper-mist hover:underline"
               >
                 <Icon className="h-4 w-4" />
                 {link.label}

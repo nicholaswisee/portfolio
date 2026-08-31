@@ -110,7 +110,7 @@ export default function Hero() {
                             width={320}
                             height={320}
                             priority
-                            sizes="(max-width: 768px) 200px, (max-width: 1024px) 260px, 320px"
+                            sizes="(max-width: 768px) 200px, (max-width: 1024px) 260px, 384px"
                             className="relative h-52 w-52 rounded-full border-2 border-oxidized-teal/30 object-cover shadow-xl sm:h-64 sm:w-64 lg:h-72 lg:w-72"
                         />
                     </div>

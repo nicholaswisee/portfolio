@@ -75,7 +75,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       className={cn(
         "glass-surface relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full border border-paper-mist/10 px-4 py-2 lg:flex",
         visible
-          ? "backdrop-blur-xl bg-archive-ink/[0.88] shadow-[0_1px_0_0_rgba(88,166,166,0.15)_inset]"
+          ? "backdrop-blur-xl bg-archive-ink/[0.88] shadow-[0_1px_0_0_rgba(22,60,43,0.15)_inset]"
           : "backdrop-blur-md bg-archive-ink/[0.65] shadow-[0_1px_0_0_rgba(231,236,232,0.06)_inset]",
         className,
       )}

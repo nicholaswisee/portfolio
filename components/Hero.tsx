@@ -75,7 +75,7 @@ export default function Hero() {
                     >
                         <Button
                             asChild
-                            className="bg-oxidized-teal text-archive-ink hover:bg-oxidized-teal/90"
+                            className="bg-oxidized-teal text-paper-mist hover:bg-oxidized-teal/90"
                         >
                             <a href="#work">
                                 View selected work

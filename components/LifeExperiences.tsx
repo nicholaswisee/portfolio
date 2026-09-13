@@ -12,6 +12,7 @@ export default function LifeExperiences() {
             id="life"
             className="section-block"
             aria-labelledby="life-title"
+            data-section="life"
         >
             <div className="site-container">
                 <div className="mb-10 md:mb-14">
@@ -29,18 +30,15 @@ export default function LifeExperiences() {
                             key={item.image}
                             data-life="figure"
                             style={{ aspectRatio: item.aspectRatio ?? "4/3" }}
-                            initial={
-                                prefersReducedMotion
-                                    ? { opacity: 1 }
-                                    : { opacity: 0 }
-                            }
+                            initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{
-                                duration: 0.5,
+                                duration: prefersReducedMotion ? 0 : 0.5,
                                 delay: prefersReducedMotion ? 0 : idx * 0.1,
                             }}
                             className="life-collage-item group relative overflow-hidden rounded-xl bg-slate-field"
+                            data-motion-content="true"
                         >
                             <Image
                                 src={item.image}
@@ -49,10 +47,13 @@ export default function LifeExperiences() {
                                 sizes="(max-width: 768px) 50vw, 33vw"
                                 className="life-collage-image object-cover"
                             />
-                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-archive-ink/80 via-archive-ink/20 to-transparent" />
+                            <div className="pointer-events-none absolute inset-0 bg-foreground/70" />
                             <figcaption className="life-collage-caption absolute inset-x-0 bottom-0 p-4 md:p-5">
                                 <p className="font-display text-lg leading-tight text-paper-mist md:text-xl">
                                     {item.title}
+                                </p>
+                                <p className="mt-1 text-sm text-paper-mist/80">
+                                    {item.place}
                                 </p>
                             </figcaption>
                         </motion.figure>

@@ -1,39 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { Download, Github, Mail } from "lucide-react";
-import { Button } from "./ui/button";
 import { usePortfolioPreferences } from "./PortfolioPreferences";
-import {
-    capabilityGroups,
-    credentialItems,
-    educationItems,
-    techStackCategories,
-    toolbox,
-} from "@/content/portfolio";
-import type { TechStackItem } from "@/types/types";
-
-function TechIcon({ item }: { item: TechStackItem }) {
-    if (!item.icon) return null;
-
-    return (
-        <Image
-            src={item.icon}
-            alt=""
-            width={24}
-            height={24}
-            className="h-4 w-4 shrink-0"
-            aria-hidden="true"
-        />
-    );
-}
+import { techStackCategories } from "@/content/portfolio";
 
 export default function AboutSkills() {
     const prefersReducedMotion = useReducedMotion();
     const { density } = usePortfolioPreferences();
     const isCompact = density === "compact";
+    const [lanesPaused, setLanesPaused] = useState(false);
 
     return (
         <section
@@ -41,7 +17,6 @@ export default function AboutSkills() {
             data-section="about"
             className="section-block bg-elevated"
             aria-labelledby="about-title"
-            data-about-layout="about-with-evidence"
             data-density-presentation={isCompact ? "compact" : "full"}
         >
             <div className="site-container">
@@ -73,109 +48,6 @@ export default function AboutSkills() {
                             </p>
                         </div>
 
-                        <ul className={`${isCompact ? "mt-5 space-y-2" : "mt-7 space-y-3"}`}>
-                            {capabilityGroups.map((group) => (
-                                <li
-                                    key={group.title}
-                                    data-capability-group={group.title}
-                                    className={`rounded-lg border border-border bg-surface ${isCompact ? "p-3" : "p-4"}`}
-                                >
-                                    <div className="flex items-baseline justify-between gap-3">
-                                        <h3 className="font-medium text-foreground">
-                                            {group.title}
-                                        </h3>
-                                        <a
-                                            href={group.evidenceHref}
-                                            className="shrink-0 text-xs text-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
-                                        >
-                                            Evidence
-                                        </a>
-                                    </div>
-                                    <p className="mt-1 text-sm text-muted">
-                                        {group.description}
-                                    </p>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className={`${isCompact ? "mt-4 gap-2" : "mt-6 gap-2.5"} flex flex-wrap`}>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                asChild
-                                className="border-border bg-transparent text-foreground hover:bg-surface"
-                            >
-                                <a
-                                    href="https://github.com/nicholaswisee"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <Github className="mr-2 h-4 w-4" />
-                                    GitHub
-                                </a>
-                            </Button>
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                asChild
-                                className="border-border bg-transparent text-foreground hover:bg-surface"
-                            >
-                                <a href="mailto:nicholasaragih@gmail.com">
-                                    <Mail className="mr-2 h-4 w-4" />
-                                    Email
-                                </a>
-                            </Button>
-                            <Button
-                                asChild
-                                variant="outline"
-                                size="sm"
-                                className="border-accent/40 bg-transparent text-foreground hover:bg-accent/10"
-                            >
-                                <Link href="/CV_Nicholas_Wise.pdf" download>
-                                    Download CV
-                                    <Download className="ml-2 h-4 w-4" />
-                                </Link>
-                            </Button>
-                        </div>
-
-                        <div className={`${isCompact ? "mt-6 space-y-4 pt-4" : "mt-10 space-y-6 pt-6"} section-rule`}>
-                            <div data-education-block="true">
-                                <p className="section-eyebrow">Education</p>
-                                <dl className={`${isCompact ? "mt-2 space-y-2" : "mt-3 space-y-3"}`}>
-                                    {educationItems.map((item) => (
-                                        <div
-                                            key={item.institution}
-                                            className={`rounded-lg border border-border bg-surface ${isCompact ? "p-3" : "p-4"}`}
-                                            data-education-record="true"
-                                        >
-                                            <dt className="font-medium text-foreground">
-                                                {item.institution}
-                                            </dt>
-                                            <dd className="mt-1 text-sm text-muted">
-                                                {item.program} · {item.dates}
-                                            </dd>
-                                            <dd className="mt-1 text-sm text-foreground/80">
-                                                {item.result}
-                                            </dd>
-                                        </div>
-                                    ))}
-                                </dl>
-                            </div>
-                            <div data-credentials-block="true">
-                                <p className="section-eyebrow">Credentials</p>
-                                <ul className={`${isCompact ? "mt-2 space-y-1" : "mt-3 space-y-2"}`}>
-                                    {credentialItems.map((item) => (
-                                        <li
-                                            key={item.name}
-                                            className="border-l-2 border-accent pl-3 text-sm text-foreground/80"
-                                            data-credential-record="true"
-                                        >
-                                            {item.name}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
                     </motion.div>
 
                     <motion.div
@@ -186,48 +58,67 @@ export default function AboutSkills() {
                         data-motion-content="true"
                         className="min-w-0"
                     >
-                        <p className={`${isCompact ? "mb-2" : "mb-3"} section-eyebrow`}>Technology stack</p>
+                        <div className={`${isCompact ? "mb-2" : "mb-3 flex items-center justify-between gap-4"}`}>
+                            <p className="section-eyebrow">Technology stack</p>
+                            {!isCompact && (
+                                <button
+                                    type="button"
+                                    data-tech-lanes-control="true"
+                                    aria-pressed={lanesPaused}
+                                    onClick={() => setLanesPaused((paused) => !paused)}
+                                    className="rounded-sm text-sm text-foreground/80 hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                                >
+                                    {lanesPaused
+                                        ? "Resume technology lanes"
+                                        : "Pause technology lanes"}
+                                </button>
+                            )}
+                        </div>
                         <div className={`${isCompact ? "space-y-3 pt-4" : "space-y-5 pt-6"} section-rule`}>
                             {techStackCategories.map((category) => (
                                 <section key={category.title} data-stack={category.title}>
                                     <h3 className="text-sm font-medium text-foreground">
                                         {category.title}
                                     </h3>
-                                    <ul
-                                        className={`${isCompact ? "mt-2 grid-cols-1 gap-1.5" : "mt-3 grid-cols-1 gap-2 sm:grid-cols-2"} grid`}
-                                    >
-                                        {category.items.map((item) => (
-                                            <li
-                                                key={item.name}
-                                                className={`flex items-center gap-2 rounded-md border border-border bg-surface px-3 text-sm text-foreground ${isCompact ? "py-1.5" : "py-2"}`}
-                                                data-skill-fallback={
-                                                    item.icon ? undefined : "text"
-                                                }
-                                            >
-                                                <TechIcon item={item} />
-                                                {item.name}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    {isCompact ? (
+                                        <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                                            {category.items.map((item) => item.name).join(" · ")}
+                                        </p>
+                                    ) : (
+                                        <div
+                                            className="tech-lane-viewport mt-3"
+                                            data-tech-lanes="moving"
+                                            data-lane-paused={lanesPaused ? "true" : undefined}
+                                        >
+                                            <div className="tech-lane-track">
+                                                <ul className="tech-lane-group">
+                                                    {category.items.map((item) => (
+                                                        <li
+                                                            key={item.name}
+                                                            className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
+                                                            data-skill-fallback={item.icon ? undefined : "text"}
+                                                        >
+                                                            {item.name}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                                <ul className="tech-lane-group tech-lane-duplicate" aria-hidden="true">
+                                                    {category.items.map((item) => (
+                                                    <li
+                                                        key={item.name}
+                                                        className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
+                                                        data-skill-fallback={item.icon ? undefined : "text"}
+                                                    >
+                                                        {item.name}
+                                                    </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    )}
                                 </section>
                             ))}
                         </div>
-
-                        <section className={`${isCompact ? "mt-5 pt-4" : "mt-8 pt-6"} section-rule`} aria-labelledby="toolbox-title">
-                            <h3 id="toolbox-title" className="section-eyebrow">
-                                Toolbox
-                            </h3>
-                            <ul className={`${isCompact ? "mt-2 gap-1.5" : "mt-3 gap-2"} flex flex-wrap`} data-toolbox="static">
-                                {toolbox.map((tool) => (
-                                    <li
-                                        key={tool}
-                                        className="rounded-md border border-border bg-surface px-2 py-1 text-xs text-muted"
-                                    >
-                                        {tool}
-                                    </li>
-                                ))}
-                            </ul>
-                        </section>
                     </motion.div>
                 </div>
             </div>

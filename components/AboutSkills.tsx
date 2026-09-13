@@ -1,14 +1,21 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import { Button } from "./ui/button";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
 import { Download, Github, Mail } from "lucide-react";
-import { useState } from "react";
-import { techStackCategories } from "@/content/portfolio";
+import { Button } from "./ui/button";
+import { usePortfolioPreferences } from "./PortfolioPreferences";
+import {
+    capabilityGroups,
+    credentialItems,
+    educationItems,
+    techStackCategories,
+    toolbox,
+} from "@/content/portfolio";
+import type { TechStackItem } from "@/types/types";
 
-function TechIcon({ item }: { item: { name: string; icon?: string } }) {
+function TechIcon({ item }: { item: TechStackItem }) {
     if (!item.icon) return null;
 
     return (
@@ -17,113 +24,44 @@ function TechIcon({ item }: { item: { name: string; icon?: string } }) {
             alt=""
             width={24}
             height={24}
-            className="h-5 w-5 shrink-0"
+            className="h-4 w-4 shrink-0"
             aria-hidden="true"
         />
     );
 }
 
-function MarqueeStrip({
-    category,
-    categoryIndex,
-    isPaused,
-}: {
-    category: (typeof techStackCategories)[number];
-    categoryIndex: number;
-    isPaused: boolean;
-}) {
-    const prefersReducedMotion = useReducedMotion();
-    const splitAt = Math.ceil(category.items.length / 2);
-    const lanes =
-        category.items.length > 10
-            ? [category.items.slice(0, splitAt), category.items.slice(splitAt)]
-            : [category.items];
-    const precedingLaneCount = techStackCategories
-        .slice(0, categoryIndex)
-        .reduce(
-            (count, previousCategory) =>
-                count + (previousCategory.items.length > 10 ? 2 : 1),
-            0,
-        );
-
-    return (
-        <div className="space-y-1.5" data-stack={category.title}>
-            <p className="text-xs font-semibold uppercase tracking-wider text-paper-mist/60">
-                {category.title}
-            </p>
-            {lanes.map((lane, laneIndex) => {
-                const movesRight = (precedingLaneCount + laneIndex) % 2 === 1;
-                const doubled = [...lane, ...lane];
-                return (
-                    <div
-                        key={`${category.title}-${laneIndex}`}
-                        className="marquee-viewport"
-                        data-stack-row="true"
-                        data-stack-direction={movesRight ? "right" : "left"}
-                    >
-                        <div
-                            className={`marquee-track ${movesRight ? "marquee-track--reverse" : ""}`}
-                            style={
-                                prefersReducedMotion || isPaused
-                                    ? { animation: "none" }
-                                    : undefined
-                            }
-                        >
-                            {doubled.map((item, i) => (
-                                <span
-                                    key={`${item.name}-${i}`}
-                                    className="inline-flex items-center gap-1.5 rounded-full border border-paper-mist/10 bg-archive-ink/50 px-3 py-1.5 text-xs text-paper-mist/80"
-                                    aria-hidden={
-                                        i >= lane.length ? "true" : undefined
-                                    }
-                                    data-skill-fallback={
-                                        item.icon ? undefined : "text"
-                                    }
-                                >
-                                    <TechIcon item={item} />
-                                    {item.name}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                );
-            })}
-        </div>
-    );
-}
-
 export default function AboutSkills() {
     const prefersReducedMotion = useReducedMotion();
-    const [isPaused, setIsPaused] = useState(false);
+    const { density } = usePortfolioPreferences();
+    const isCompact = density === "compact";
 
     return (
         <section
             id="about"
-            className="section-block bg-research-field"
+            data-section="about"
+            className="section-block bg-elevated"
             aria-labelledby="about-title"
-            data-about-layout="merged"
+            data-about-layout="about-with-evidence"
+            data-density-presentation={isCompact ? "compact" : "full"}
         >
             <div className="site-container">
-                <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12">
+                <div className={`grid grid-cols-1 ${isCompact ? "gap-6 lg:gap-8" : "gap-10 lg:gap-12"} lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]`}>
                     <motion.div
-                        initial={
-                            prefersReducedMotion
-                                ? { opacity: 1 }
-                                : { opacity: 0, x: -30 }
-                        }
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+                        data-motion-content="true"
                         className="min-w-0"
                     >
                         <h2 id="about-title" className="section-title mb-5">
                             About
                         </h2>
-                        <div className="space-y-3 leading-relaxed text-paper-mist/80">
+                        <div className={`${isCompact ? "space-y-2 text-sm" : "space-y-3"} leading-relaxed text-foreground/80`}>
                             <p>
                                 ITB Informatics Junior focused on scalable
                                 software infrastructure, event-driven
-                                architectures, and distributed systems. I've
+                                architectures, and distributed systems. I&apos;ve
                                 always been intrigued by how large scale systems
                                 impact globally.
                             </p>
@@ -135,14 +73,43 @@ export default function AboutSkills() {
                             </p>
                         </div>
 
-                        <div className="mt-6 flex flex-wrap gap-2.5">
+                        <ul className={`${isCompact ? "mt-5 space-y-2" : "mt-7 space-y-3"}`}>
+                            {capabilityGroups.map((group) => (
+                                <li
+                                    key={group.title}
+                                    data-capability-group={group.title}
+                                    className={`rounded-lg border border-border bg-surface ${isCompact ? "p-3" : "p-4"}`}
+                                >
+                                    <div className="flex items-baseline justify-between gap-3">
+                                        <h3 className="font-medium text-foreground">
+                                            {group.title}
+                                        </h3>
+                                        <a
+                                            href={group.evidenceHref}
+                                            className="shrink-0 text-xs text-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                                        >
+                                            Evidence
+                                        </a>
+                                    </div>
+                                    <p className="mt-1 text-sm text-muted">
+                                        {group.description}
+                                    </p>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className={`${isCompact ? "mt-4 gap-2" : "mt-6 gap-2.5"} flex flex-wrap`}>
                             <Button
                                 variant="outline"
                                 size="sm"
                                 asChild
-                                className="border-paper-mist/15 bg-transparent text-paper-mist hover:bg-paper-mist/10"
+                                className="border-border bg-transparent text-foreground hover:bg-surface"
                             >
-                                <a href="https://github.com/nicholaswisee">
+                                <a
+                                    href="https://github.com/nicholaswisee"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
                                     <Github className="mr-2 h-4 w-4" />
                                     GitHub
                                 </a>
@@ -151,7 +118,7 @@ export default function AboutSkills() {
                                 variant="outline"
                                 size="sm"
                                 asChild
-                                className="border-paper-mist/15 bg-transparent text-paper-mist hover:bg-paper-mist/10"
+                                className="border-border bg-transparent text-foreground hover:bg-surface"
                             >
                                 <a href="mailto:nicholasaragih@gmail.com">
                                     <Mail className="mr-2 h-4 w-4" />
@@ -162,7 +129,7 @@ export default function AboutSkills() {
                                 asChild
                                 variant="outline"
                                 size="sm"
-                                className="border-oxidized-teal/40 bg-transparent text-paper-mist hover:bg-oxidized-teal/10"
+                                className="border-accent/40 bg-transparent text-foreground hover:bg-accent/10"
                             >
                                 <Link href="/CV_Nicholas_Wise.pdf" download>
                                     Download CV
@@ -170,41 +137,97 @@ export default function AboutSkills() {
                                 </Link>
                             </Button>
                         </div>
+
+                        <div className={`${isCompact ? "mt-6 space-y-4 pt-4" : "mt-10 space-y-6 pt-6"} section-rule`}>
+                            <div data-education-block="true">
+                                <p className="section-eyebrow">Education</p>
+                                <dl className={`${isCompact ? "mt-2 space-y-2" : "mt-3 space-y-3"}`}>
+                                    {educationItems.map((item) => (
+                                        <div
+                                            key={item.institution}
+                                            className={`rounded-lg border border-border bg-surface ${isCompact ? "p-3" : "p-4"}`}
+                                            data-education-record="true"
+                                        >
+                                            <dt className="font-medium text-foreground">
+                                                {item.institution}
+                                            </dt>
+                                            <dd className="mt-1 text-sm text-muted">
+                                                {item.program} · {item.dates}
+                                            </dd>
+                                            <dd className="mt-1 text-sm text-foreground/80">
+                                                {item.result}
+                                            </dd>
+                                        </div>
+                                    ))}
+                                </dl>
+                            </div>
+                            <div data-credentials-block="true">
+                                <p className="section-eyebrow">Credentials</p>
+                                <ul className={`${isCompact ? "mt-2 space-y-1" : "mt-3 space-y-2"}`}>
+                                    {credentialItems.map((item) => (
+                                        <li
+                                            key={item.name}
+                                            className="border-l-2 border-accent pl-3 text-sm text-foreground/80"
+                                            data-credential-record="true"
+                                        >
+                                            {item.name}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
                     </motion.div>
 
                     <motion.div
-                        initial={
-                            prefersReducedMotion
-                                ? { opacity: 1 }
-                                : { opacity: 0, x: 30 }
-                        }
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
+                        data-motion-content="true"
                         className="min-w-0"
                     >
-                        <p className="section-eyebrow mb-3">Capabilities</p>
-                        <button
-                            type="button"
-                            onClick={() => setIsPaused((paused) => !paused)}
-                            aria-pressed={isPaused}
-                            data-marquee-toggle="true"
-                            className="mb-3 text-xs font-medium text-paper-mist/60 underline decoration-paper-mist/20 underline-offset-4 hover:text-paper-mist"
-                        >
-                            {isPaused
-                                ? "Resume tech motion"
-                                : "Pause tech motion"}
-                        </button>
-                        <div className="space-y-4 section-rule pt-6">
-                            {techStackCategories.map((cat, index) => (
-                                <MarqueeStrip
-                                    key={cat.title}
-                                    category={cat}
-                                    categoryIndex={index}
-                                    isPaused={isPaused}
-                                />
+                        <p className={`${isCompact ? "mb-2" : "mb-3"} section-eyebrow`}>Technology stack</p>
+                        <div className={`${isCompact ? "space-y-3 pt-4" : "space-y-5 pt-6"} section-rule`}>
+                            {techStackCategories.map((category) => (
+                                <section key={category.title} data-stack={category.title}>
+                                    <h3 className="text-sm font-medium text-foreground">
+                                        {category.title}
+                                    </h3>
+                                    <ul
+                                        className={`${isCompact ? "mt-2 grid-cols-1 gap-1.5" : "mt-3 grid-cols-1 gap-2 sm:grid-cols-2"} grid`}
+                                    >
+                                        {category.items.map((item) => (
+                                            <li
+                                                key={item.name}
+                                                className={`flex items-center gap-2 rounded-md border border-border bg-surface px-3 text-sm text-foreground ${isCompact ? "py-1.5" : "py-2"}`}
+                                                data-skill-fallback={
+                                                    item.icon ? undefined : "text"
+                                                }
+                                            >
+                                                <TechIcon item={item} />
+                                                {item.name}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </section>
                             ))}
                         </div>
+
+                        <section className={`${isCompact ? "mt-5 pt-4" : "mt-8 pt-6"} section-rule`} aria-labelledby="toolbox-title">
+                            <h3 id="toolbox-title" className="section-eyebrow">
+                                Toolbox
+                            </h3>
+                            <ul className={`${isCompact ? "mt-2 gap-1.5" : "mt-3 gap-2"} flex flex-wrap`} data-toolbox="static">
+                                {toolbox.map((tool) => (
+                                    <li
+                                        key={tool}
+                                        className="rounded-md border border-border bg-surface px-2 py-1 text-xs text-muted"
+                                    >
+                                        {tool}
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
                     </motion.div>
                 </div>
             </div>

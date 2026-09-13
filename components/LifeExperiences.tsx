@@ -3,9 +3,13 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { lifeExperiences } from "@/content/portfolio";
+import { usePortfolioPreferences } from "./PortfolioPreferences";
 
 export default function LifeExperiences() {
     const prefersReducedMotion = useReducedMotion();
+    const { density } = usePortfolioPreferences();
+
+    if (density === "compact") return null;
 
     return (
         <section

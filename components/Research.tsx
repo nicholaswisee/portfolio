@@ -29,7 +29,7 @@ export default function Research() {
                     </p>
                 </div>
 
-                <div className={isCompact ? "space-y-3" : "space-y-5"}>
+                <div className={isCompact ? "compact-research-list" : "space-y-0"}>
                     {researchItems.map((item, index) => (
                         <motion.article
                             key={item.title}
@@ -41,64 +41,17 @@ export default function Research() {
                                 delay: prefersReducedMotion ? 0 : index * 0.08,
                             }}
                             data-motion-content="true"
-                            className={`rounded-xl border border-border bg-surface ${isCompact ? "p-4" : "p-6 sm:p-8"}`}
+                            className={isCompact ? "compact-research-row" : "border-b border-border py-6 first:pt-0 last:border-b-0 sm:py-8"}
                         >
                             <h3 className="font-display text-xl font-medium text-foreground sm:text-2xl">
                                 {item.title}
                             </h3>
 
-                            <dl className={isCompact ? "mt-4 space-y-3" : "mt-5 space-y-4"}>
-                                <div>
-                                    <dt className="section-eyebrow">Context</dt>
-                                    <dd className="mt-1 text-sm text-muted">
-                                        {item.context}
-                                    </dd>
-                                </div>
-                                <div>
-                                    <dt className="section-eyebrow">Problem</dt>
-                                    <dd className="mt-1 text-sm leading-relaxed text-foreground/80">
-                                        {item.problem}
-                                    </dd>
-                                </div>
-                                <div>
-                                    <dt className="section-eyebrow">Method</dt>
-                                    <dd className="mt-1 text-sm leading-relaxed text-foreground/80">
-                                        {item.method}
-                                    </dd>
-                                </div>
-                                <div>
-                                    <dt className="section-eyebrow">Result</dt>
-                                    <dd className="mt-1 text-sm leading-relaxed text-foreground/80">
-                                        {item.result}
-                                    </dd>
-                                </div>
-                                {item.qualifier && (
-                                    <div>
-                                        <dt className="section-eyebrow">Qualifier</dt>
-                                        <dd className="mt-1 text-sm leading-relaxed text-muted">
-                                            {item.qualifier}
-                                        </dd>
-                                    </div>
-                                )}
-                            </dl>
+                            <p data-research-summary="true" className="mt-3 max-w-4xl text-sm leading-relaxed text-foreground/80">
+                                {item.summary}
+                            </p>
 
-                            {item.technologies.length > 0 && (
-                                <ul
-                                    className="mt-5 flex flex-wrap gap-2"
-                                    aria-label="Technologies"
-                                >
-                                    {item.technologies.map((technology) => (
-                                        <li
-                                            key={technology}
-                                            className="rounded-md border border-border bg-elevated px-2 py-1 text-xs text-foreground/80"
-                                        >
-                                            {technology}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-
-                            <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-border pt-4">
+                            <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
                                 {item.links.map((link) => {
                                     const isExternal = link.href.startsWith("http");
 

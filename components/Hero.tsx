@@ -5,14 +5,17 @@ import { motion, useReducedMotion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Download } from "lucide-react";
 import Link from "next/link";
+import { usePortfolioPreferences } from "./PortfolioPreferences";
 
 export default function Hero() {
     const prefersReducedMotion = useReducedMotion();
+    const { density } = usePortfolioPreferences();
+    const isCompact = density === "compact";
 
     const entrance = {
         hidden: {
-            opacity: prefersReducedMotion ? 1 : 0,
-            y: prefersReducedMotion ? 0 : 24,
+            opacity: 0,
+            y: 24,
         },
         visible: (delay: number) => ({
             opacity: 1,
@@ -28,17 +31,21 @@ export default function Hero() {
     return (
         <section
             id="top"
-            className="site-container flex min-h-[calc(100vh-6rem)] flex-col justify-center pt-24 pb-12 md:pt-28 md:pb-20"
+            data-section="hero"
+            aria-labelledby="hero-title"
+            className={`site-container flex flex-col justify-center ${isCompact ? "pt-20 pb-8 md:pt-24 md:pb-10" : "min-h-[calc(100vh-6rem)] pt-24 pb-12 md:pt-28 md:pb-20"}`}
             aria-label="Introduction"
         >
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14">
+            <div className={`grid grid-cols-1 items-center ${isCompact ? "gap-6 lg:gap-8" : "gap-10 lg:gap-14"} lg:grid-cols-[1.2fr_0.8fr]`}>
                 <div className="max-w-3xl">
                     <motion.h1
+                        id="hero-title"
                         custom={0.1}
                         initial="hidden"
                         animate="visible"
                         variants={entrance}
-                        className="font-display text-4xl font-medium leading-[1.1] leading-[var(--leading-display)] text-paper-mist sm:text-5xl md:text-6xl lg:text-7xl"
+                        data-motion-content="true"
+                        className={`font-display font-medium leading-[var(--leading-display)] text-foreground ${isCompact ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl" : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl"}`}
                     >
                         Nicholas Wise Saragih Sumbayak
                     </motion.h1>
@@ -48,7 +55,8 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={entrance}
-                        className="mt-6 max-w-2xl text-lg leading-relaxed text-paper-mist/80 sm:text-xl md:text-2xl"
+                        data-motion-content="true"
+                        className={`${isCompact ? "mt-4 text-base sm:text-lg md:text-xl" : "mt-6 text-lg sm:text-xl md:text-2xl"} max-w-2xl leading-relaxed text-foreground/80`}
                     >
                         I build scalable software infrastructure and make the
                         most out of every opportunity.
@@ -59,7 +67,8 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={entrance}
-                        className="mt-4 max-w-2xl text-base leading-relaxed text-paper-mist/60 sm:text-lg"
+                        data-motion-content="true"
+                        className={`${isCompact ? "mt-3 max-w-xl text-sm sm:text-base" : "mt-4 max-w-2xl text-base sm:text-lg"} leading-relaxed text-muted`}
                     >
                         From full-stack webapps and algorithmic solvers to
                         distributed systems and event-driven architectures, I
@@ -72,13 +81,14 @@ export default function Hero() {
                         initial="hidden"
                         animate="visible"
                         variants={entrance}
-                        className="mt-10 flex flex-wrap items-center gap-4"
+                        data-motion-content="true"
+                        className={`${isCompact ? "mt-7 gap-3" : "mt-10 gap-4"} flex flex-wrap items-center`}
                     >
                         <Button
                             asChild
-                            className="bg-oxidized-teal text-paper-mist hover:bg-oxidized-teal/90"
+                            className="bg-accent text-accent-foreground hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 motion-safe:active:scale-[0.98]"
                         >
-                            <a href="#work">
+                            <a href="#projects">
                                 View selected work
                                 <ArrowDown className="ml-2 h-4 w-4" />
                             </a>
@@ -86,7 +96,7 @@ export default function Hero() {
                         <Button
                             variant="outline"
                             asChild
-                            className="border-paper-mist/20 bg-transparent text-paper-mist hover:bg-paper-mist/10"
+                            className="border-border bg-transparent text-foreground hover:bg-elevated focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 motion-safe:active:scale-[0.98]"
                         >
                             <Link href="/CV_Nicholas_Wise.pdf" download>
                                 Download CV
@@ -101,10 +111,11 @@ export default function Hero() {
                     initial="hidden"
                     animate="visible"
                     variants={entrance}
+                    data-motion-content="true"
                     className="flex justify-center"
                 >
-                    <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-oxidized-teal/15 blur-3xl" />
+                    <div className="group relative">
+                        <div className="absolute inset-0 rounded-full bg-accent/15 blur-3xl" />
                         <Image
                             src="/gua.webp"
                             alt="Portrait of Nicholas Wise Saragih Sumbayak"
@@ -112,7 +123,7 @@ export default function Hero() {
                             height={500}
                             priority
                             sizes="(max-width: 768px) 200px, (max-width: 1024px) 260px, 384px"
-                            className="relative h-52 w-52 rounded-full border-2 border-oxidized-teal/30 object-cover shadow-xl sm:h-64 sm:w-64 lg:h-96 lg:w-96"
+                            className={`relative rounded-full border-2 border-accent/30 object-cover shadow-xl motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.02] ${isCompact ? "h-40 w-40 sm:h-48 sm:w-48 lg:h-64 lg:w-64" : "h-52 w-52 sm:h-64 sm:w-64 lg:h-96 lg:w-96"}`}
                         />
                     </div>
                 </motion.div>

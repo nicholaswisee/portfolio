@@ -80,7 +80,7 @@ if (!existsSync(buildPath)) {
       ),
     );
   const requiredAssets = [
-    "/gua.webp",
+    "/me.png",
     "/tedx.png",
     "/tubbu.png",
     "/templeos.png",
@@ -165,33 +165,15 @@ if (!existsSync(buildPath)) {
       "density controls expose pressed state",
       hasMarkedElementWithTexts("data-density-control", "true", ['aria-pressed="']),
     ],
-    [
-      "About evidence layout is present",
-      html.includes('data-about-layout="about-with-evidence"'),
-    ],
-    ["education evidence is present", html.includes('data-education-block="true"')],
-    [
-      "capability groups render",
-      ["Product Engineering", "Systems & Algorithms", "Research & Data"].every(
-        (title) =>
-          html.includes(
-            `data-capability-group="${title.replace("&", "&amp;")}"`,
-          ),
-      ),
-    ],
-    [
-      "credential evidence is present",
-      html.includes('data-credentials-block="true"'),
-    ],
+    ["About capability groups are removed", !html.includes("data-capability-group=")],
+    ["About education is removed", !html.includes('data-education-block="true"')],
+    ["About credentials are removed", !html.includes('data-credentials-block="true"')],
+    ["About toolbox is removed", !html.includes('data-toolbox="')],
+    ["portrait uses /me.png", html.includes('src="/me.png"')],
     ["Tubbu is featured", html.includes("Tubbu")],
     ["Tubbu links to its live site", html.includes("https://tubbuwellness.com")],
     ["Tubbu has no GitHub link", !html.includes("github.com/nicholaswisee/tubbu")],
     ["exactly three featured projects", count(/data-featured="true"/g) === 3],
-    ["archive projects render as rows", count(/data-archive="true"/g) >= 10],
-    [
-      "closed project archive is inert",
-      /id="project-archive"[^>]*\binert(?:[\s=>]|$)/.test(html),
-    ],
     [
       "hero is labelled by its heading",
       html.includes('aria-labelledby="hero-title"') && html.includes('id="hero-title"'),
@@ -210,6 +192,14 @@ if (!existsSync(buildPath)) {
       "second research title is preserved",
       html.includes("M/M/1 Queue Analysis with Markov Chains and Eigenvalues"),
     ],
+    [
+      "research items have brief descriptions",
+      count(/data-research-summary="true"/g) === 2,
+    ],
+    [
+      "verbose research fields are removed",
+      !/>\s*(?:Context|Problem|Method|Result|Qualifier)\s*</.test(html),
+    ],
     ["Life gallery renders eleven photos", count(/data-life="figure"/g) === 11],
     ["Life placeholder text removed", !html.includes("coming soon")],
     [
@@ -226,17 +216,22 @@ if (!existsSync(buildPath)) {
       ].every((category) => html.includes(`data-stack="${category}"`)),
     ],
     [
-      "marquee toggle is absent",
-      !html.includes('data-marquee-toggle="true"'),
+      "Full technology stack uses moving lanes",
+      html.includes('data-tech-lanes="moving"'),
     ],
-    ["marquee classes are absent", !html.includes("marquee-track")],
     [
-      "stack direction contract is absent",
-      !html.includes("data-stack-direction"),
+      "Full technology lanes have a pause control",
+      hasMarkedElementWithTexts("data-tech-lanes-control", "true", [
+        "Pause technology lanes",
+      ]),
     ],
     [
       "exactly ten experience groups render",
       count(/data-experience-group="true"/g) === 10,
+    ],
+    [
+      "every experience group has a short description",
+      count(/data-experience-description="true"/g) === 10,
     ],
     ...experienceGroups.flatMap(([organization, roles]) => [
       [

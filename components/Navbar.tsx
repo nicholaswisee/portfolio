@@ -11,18 +11,26 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { navItems } from "@/content/portfolio";
-import { DensityControl, ThemeControl } from "@/components/PortfolioPreferences";
+import {
+  DensityControl,
+  ThemeControl,
+  usePortfolioPreferences,
+} from "@/components/PortfolioPreferences";
 import { useState } from "react";
 
 export function Nav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { density } = usePortfolioPreferences();
+  const visibleNavItems = navItems.filter(
+    (item) => density !== "compact" || item.name !== "Life",
+  );
 
   return (
     <header className="relative w-full">
       <Navbar>
           <NavBody>
             <NavbarLogo />
-            <NavItems items={navItems} />
+             <NavItems items={visibleNavItems} />
             <div className="relative z-30 flex shrink-0 items-center justify-self-end gap-2">
               <ThemeControl />
               <DensityControl />
@@ -46,7 +54,7 @@ export function Nav() {
               <ThemeControl />
               <DensityControl />
             </div>
-            {navItems.map((item, idx) => (
+            {visibleNavItems.map((item, idx) => (
               <a
                 key={`mobile-link-${idx}`}
                 href={item.link}

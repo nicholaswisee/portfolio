@@ -33,11 +33,11 @@ export default function Hero() {
             id="top"
             data-section="hero"
             aria-labelledby="hero-title"
-            className={`site-container flex flex-col justify-center ${isCompact ? "pt-20 pb-8 md:pt-24 md:pb-10" : "min-h-[calc(100vh-6rem)] pt-24 pb-12 md:pt-28 md:pb-20"}`}
+            className={`site-container flex flex-col justify-center ${isCompact ? "pt-20 pb-8 text-center md:pt-24 md:pb-10" : "min-h-[calc(100vh-6rem)] pt-24 pb-12 md:pt-28 md:pb-20"}`}
             aria-label="Introduction"
         >
-            <div className={`grid grid-cols-1 items-center ${isCompact ? "gap-6 lg:gap-8" : "gap-10 lg:gap-14"} lg:grid-cols-[1.2fr_0.8fr]`}>
-                <div className="max-w-3xl">
+            <div className={`grid grid-cols-1 items-center ${isCompact ? "mx-auto max-w-2xl gap-6 lg:gap-8" : "gap-10 lg:gap-14 lg:grid-cols-[1.2fr_0.8fr]"}`}>
+                <div className={isCompact ? "mx-auto max-w-2xl" : "max-w-3xl"}>
                     <motion.h1
                         id="hero-title"
                         custom={0.1}
@@ -56,7 +56,7 @@ export default function Hero() {
                         animate="visible"
                         variants={entrance}
                         data-motion-content="true"
-                        className={`${isCompact ? "mt-4 text-base sm:text-lg md:text-xl" : "mt-6 text-lg sm:text-xl md:text-2xl"} max-w-2xl leading-relaxed text-foreground/80`}
+                        className={`${isCompact ? "mx-auto mt-4 text-base sm:text-lg md:text-xl" : "mt-6 text-lg sm:text-xl md:text-2xl"} max-w-2xl leading-relaxed text-foreground/80`}
                     >
                         I build scalable software infrastructure and make the
                         most out of every opportunity.
@@ -68,7 +68,7 @@ export default function Hero() {
                         animate="visible"
                         variants={entrance}
                         data-motion-content="true"
-                        className={`${isCompact ? "mt-3 max-w-xl text-sm sm:text-base" : "mt-4 max-w-2xl text-base sm:text-lg"} leading-relaxed text-muted`}
+                        className={`${isCompact ? "mx-auto mt-3 max-w-xl text-sm sm:text-base" : "mt-4 max-w-2xl text-base sm:text-lg"} leading-relaxed text-muted`}
                     >
                         From full-stack webapps and algorithmic solvers to
                         distributed systems and event-driven architectures, I
@@ -82,7 +82,7 @@ export default function Hero() {
                         animate="visible"
                         variants={entrance}
                         data-motion-content="true"
-                        className={`${isCompact ? "mt-7 gap-3" : "mt-10 gap-4"} flex flex-wrap items-center`}
+                        className={`${isCompact ? "mt-7 justify-center gap-3" : "mt-10 gap-4"} flex flex-wrap items-center`}
                     >
                         <Button
                             asChild
@@ -114,18 +114,16 @@ export default function Hero() {
                     data-motion-content="true"
                     className="flex justify-center"
                 >
-                    <div className="group relative">
-                        <div className="absolute inset-0 rounded-full bg-accent/15 blur-3xl" />
-                        <Image
-                            src="/gua.webp"
-                            alt="Portrait of Nicholas Wise Saragih Sumbayak"
-                            width={500}
-                            height={500}
-                            priority
-                            sizes="(max-width: 768px) 200px, (max-width: 1024px) 260px, 384px"
-                            className={`relative rounded-full border-2 border-accent/30 object-cover shadow-xl motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.02] ${isCompact ? "h-40 w-40 sm:h-48 sm:w-48 lg:h-64 lg:w-64" : "h-52 w-52 sm:h-64 sm:w-64 lg:h-96 lg:w-96"}`}
-                        />
-                    </div>
+                    <Image
+                        src="/me.png"
+                        alt="Portrait of Nicholas Wise Saragih Sumbayak"
+                        width={500}
+                        height={625}
+                        priority
+                        unoptimized
+                        sizes="(max-width: 768px) 160px, (max-width: 1024px) 208px, 384px"
+                        className={`rounded-xl border-2 border-accent/30 object-cover shadow-xl motion-safe:transition-transform motion-safe:duration-500 motion-safe:hover:scale-[1.02] ${isCompact ? "h-44 w-36 sm:h-52 sm:w-42" : "h-64 w-52 sm:h-80 sm:w-64 lg:h-120 lg:w-96"}`}
+                    />
                 </motion.div>
             </div>
         </section>

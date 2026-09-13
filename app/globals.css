@@ -53,6 +53,12 @@
   --life-item-gap-wide: 0.75rem;
 }
 
+[data-density="compact"] .site-container {
+  width: 100%;
+  max-width: 52.5rem;
+  box-sizing: border-box;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -166,6 +172,64 @@
     transition-delay: 0.15s;
   }
 
+  .tech-lane-viewport {
+    overflow: hidden;
+  }
+
+  .tech-lane-track {
+    display: flex;
+    width: max-content;
+    gap: 0.5rem;
+    animation: technology-lane 36s linear infinite;
+  }
+
+  .tech-lane-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .tech-lane-group > li {
+    flex: none;
+  }
+
+  .tech-lane-viewport[data-lane-paused="true"] {
+    overflow: visible;
+  }
+
+  .tech-lane-viewport[data-lane-paused="true"] .tech-lane-track {
+    width: auto;
+    flex-wrap: wrap;
+    animation: none;
+    transform: none;
+  }
+
+  .tech-lane-viewport[data-lane-paused="true"] .tech-lane-duplicate {
+    display: none;
+  }
+
+  .tech-lane-viewport[data-lane-paused="true"] .tech-lane-group {
+    flex-wrap: wrap;
+  }
+
+  .compact-project-list,
+  .compact-experience-list,
+  .compact-research-list {
+    border-top: 1px solid var(--border);
+  }
+
+  .compact-project-row,
+  .compact-experience-row,
+  .compact-research-row {
+    display: grid;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    padding-block: 1rem;
+  }
+
+  .compact-experience-row {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  }
+
   .life-collage {
     columns: var(--life-columns);
     column-gap: var(--life-gap);
@@ -217,6 +281,12 @@
   }
 }
 
+@keyframes technology-lane {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (min-width: 768px) {
   .section-block {
     padding-block: var(--section-space-wide);
@@ -230,6 +300,11 @@
   .life-collage-item {
     margin-bottom: var(--life-item-gap-wide);
   }
+
+  .compact-project-row,
+  .compact-research-row {
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -240,6 +315,25 @@
 
   .life-collage-image {
     transform: none;
+  }
+
+  .tech-lane-track {
+    width: auto;
+    flex-wrap: wrap;
+    animation: none;
+    transform: none;
+  }
+
+  .tech-lane-viewport {
+    overflow: visible;
+  }
+
+  .tech-lane-duplicate {
+    display: none;
+  }
+
+  .tech-lane-group {
+    flex-wrap: wrap;
   }
 
   *,

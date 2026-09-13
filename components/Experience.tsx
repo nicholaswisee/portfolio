@@ -25,12 +25,12 @@ export default function Experience() {
                     </p>
                 </div>
 
-                <ol className={isCompact ? "space-y-2" : "space-y-3"}>
+                <ol className={isCompact ? "compact-experience-list" : "space-y-3"}>
                     {experienceGroups.map((group) => (
                         <li key={group.organization}>
                             <article
                                 data-experience-group="true"
-                                className={`grid gap-4 rounded-xl border border-border bg-surface ${isCompact ? "p-3 sm:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]" : "p-5 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)]"}`}
+                                className={`grid gap-4 ${isCompact ? "compact-experience-row" : "rounded-xl border border-border bg-surface p-5 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)]"}`}
                             >
                                 <h3 className="font-display text-lg font-medium text-foreground">
                                     {group.organization}
@@ -52,12 +52,18 @@ export default function Experience() {
                                             </li>
                                         ))}
                                     </ul>
+                                    <p
+                                        data-experience-description="true"
+                                        className={`${isCompact ? "mt-2 text-sm" : "mt-3 text-sm"} leading-relaxed text-foreground/80`}
+                                    >
+                                        {group.summary}
+                                    </p>
                                     {group.metrics && (
-                                        <ul className="mt-3 flex flex-wrap gap-2" aria-label="Approved metrics">
+                                        <ul className={`${isCompact ? "mt-2 gap-x-3 gap-y-1 text-xs text-muted" : "mt-3 gap-2"} flex flex-wrap`} aria-label="Approved metrics">
                                             {group.metrics.map((metric) => (
                                                 <li
                                                     key={metric}
-                                                    className="rounded-md border border-border bg-elevated px-2 py-1 text-xs text-foreground/80"
+                                                    className={isCompact ? undefined : "rounded-md border border-border bg-elevated px-2 py-1 text-xs text-foreground/80"}
                                                 >
                                                     {metric}
                                                 </li>

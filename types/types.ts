@@ -13,13 +13,6 @@ export type TechStackCategory = {
   items: TechStackItem[];
 };
 
-export type CapabilityGroup = {
-  title: string;
-  description: string;
-  technologies: string[];
-  evidenceHref: string;
-};
-
 export type DensityMode = "full" | "compact";
 export type ThemeChoice = "light" | "dark";
 
@@ -36,17 +29,6 @@ export interface ExperienceGroup {
   links?: PortfolioLink[];
 }
 
-export interface EducationItem {
-  institution: string;
-  program: string;
-  dates: string;
-  result: string;
-}
-
-export interface CredentialItem {
-  name: string;
-}
-
 export type WorkItem = {
   name: string;
   category: string;
@@ -61,6 +43,7 @@ export type WorkItem = {
 export type ResearchItem = {
   title: string;
   context: string;
+  summary: string;
   problem: string;
   method: string;
   result: string;

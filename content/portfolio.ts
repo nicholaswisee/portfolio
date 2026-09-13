@@ -1,7 +1,4 @@
 import {
-    CapabilityGroup,
-    CredentialItem,
-    EducationItem,
     ExperienceGroup,
     LifeExperience,
     PortfolioLink,
@@ -83,128 +80,6 @@ export const techStackCategories: TechStackCategory[] = [
             { name: "Postman", icon: "/postman-original.svg" },
         ],
     },
-];
-
-// ── Capability Groups (kept for About section) ──────────────────────
-export const capabilityGroups: CapabilityGroup[] = [
-    {
-        title: "Product Engineering",
-        description:
-            "End-to-end web products with payment, auth, and admin workflows.",
-        technologies: [
-            "TypeScript",
-            "React",
-            "Next.js",
-            "Go",
-            "Node.js",
-            "Bun",
-            "PostgreSQL",
-            "payments",
-            "auth",
-        ],
-        evidenceHref: "#projects",
-    },
-    {
-        title: "Systems & Algorithms",
-        description:
-            "Low-level systems, graph algorithms, and linear algebra work.",
-        technologies: [
-            "C",
-            "C++",
-            "Java",
-            "Go",
-            "operating systems",
-            "networking",
-            "graph algorithms",
-            "linear algebra",
-        ],
-        evidenceHref: "#projects",
-    },
-    {
-        title: "Research & Data",
-        description:
-            "Experiments, performance analysis, and technical writing.",
-        technologies: [
-            "Python",
-            "pandas",
-            "NumPy",
-            "experimentation",
-            "technical writing",
-        ],
-        evidenceHref: "#research",
-    },
-];
-
-export const toolbox: string[] = [
-    "C",
-    "C++",
-    "C# / .NET",
-    "Java",
-    "Go",
-    "TypeScript",
-    "JavaScript",
-    "Python",
-    "Haskell",
-    "HTML5",
-    "CSS3",
-    "React",
-    "Next.js",
-    "Vite",
-    "Tailwind CSS",
-    "React Query",
-    "Zustand",
-    "Motion",
-    "Zod",
-    "React Hook Form",
-    "TanStack Table",
-    "Node.js",
-    "Bun",
-    "Express",
-    "Hono",
-    "Flask",
-    "Django",
-    "FastAPI",
-    "NestJS",
-    "RabbitMQ",
-    "Prisma ORM",
-    "Drizzle ORM",
-    "Fiber",
-    "Gin",
-    "tRPC",
-    "Better Auth",
-    "NextAuth",
-    "Auth.js",
-    "WebAuthn",
-    "Redis",
-    "PostgreSQL",
-    "MySQL",
-    "MongoDB",
-    "SQL Server",
-    "EF Core",
-    "MediatR",
-    "FluentValidation",
-    "Midtrans",
-    "Xendit",
-    "Git",
-    "GitHub",
-    "Docker",
-    "Caddy",
-    "Nginx",
-    "PM2",
-    "Cloudflare R2",
-    "Azure",
-    "Contentful",
-    "OpenTelemetry",
-    "Sentry",
-    "Postman",
-    "Figma",
-    "Vitest",
-    "JUnit",
-    "pytest",
-    "pandas",
-    "NumPy",
-    "Argo CD",
-    "Helm",
 ];
 
 function link(label: string, href: string): PortfolioLink {
@@ -438,10 +313,12 @@ export const experienceGroups: ExperienceGroup[] = [
     {
         organization: "SPE ITB SC",
         roles: [{ title: "DevOps Engineer", dates: "Jul 2026-Present" }],
+        summary: "Current DevOps Engineer role.",
     },
     {
         organization: "Kabinet KM ITB",
         roles: [{ title: "Backend Engineer", dates: "Jul 2026-Present" }],
+        summary: "Current Backend Engineer role.",
     },
     {
         organization: "KSEP ITB",
@@ -449,14 +326,17 @@ export const experienceGroups: ExperienceGroup[] = [
             { title: "Vice Director", dates: "Apr 2025-May 2026" },
             { title: "President", dates: "May 2026-Present" },
         ],
+        summary: "Served as Vice Director before becoming President.",
     },
     {
         organization: "ARKAVIDIA",
         roles: [{ title: "Deputy Head of IT", dates: "May 2026-Present" }],
+        summary: "Current Deputy Head of IT role.",
     },
     {
         organization: "Galva",
         roles: [{ title: "MIS Intern", dates: "Jun-Aug 2026" }],
+        summary: "Completed an MIS internship from June through August 2026.",
     },
     {
         organization: "TEDxITB",
@@ -464,46 +344,30 @@ export const experienceGroups: ExperienceGroup[] = [
             { title: "Frontend Developer", dates: "Nov 2024-May 2025" },
             { title: "Director", dates: "Nov 2025-Jun 2026" },
         ],
+        summary: "Contributed as Frontend Developer and later served as Director.",
     },
     {
         organization: "Aku Masuk ITB 2026",
         roles: [{ title: "Deputy Head of IT", dates: "Oct 2025-Feb 2026" }],
+        summary: "Served as Deputy Head of IT from October 2025 through February 2026.",
     },
     {
         organization: "OSKM ITB 2025",
         roles: [{ title: "Backend Developer", dates: "Aug 2025" }],
+        summary: "Worked as a Backend Developer in August 2025.",
     },
     {
         organization: "IMPACT 5.0",
         roles: [{ title: "Project Officer", dates: "Jan-Jul 2025" }],
+        summary: "Project Officer for a committee of 146 across 9 divisions and 17 subdivisions.",
         metrics: ["146 committees", "9 divisions", "17 subdivisions"],
     },
     {
         organization: "PTD KSEP",
         roles: [{ title: "Head of OH-KM", dates: "Aug-Sep 2025" }],
+        summary: "Head of OH-KM for an event with more than 440 registrants.",
         metrics: ["440+ registrants"],
     },
-];
-
-export const educationItems: EducationItem[] = [
-    {
-        institution: "Institut Teknologi Bandung",
-        program: "B.Eng in Computer Science",
-        dates: "Aug 2024-Jul 2028 expected",
-        result: "GPA 3.69/4.00",
-    },
-    {
-        institution: "SMAK 1 PENABUR Jakarta",
-        program: "Natural Sciences",
-        dates: "Jul 2021-May 2024",
-        result: "Grade 91.80/100",
-    },
-];
-
-export const credentialItems: CredentialItem[] = [
-    { name: "The Ultimate React Course 2025" },
-    { name: "Responsive Web Design" },
-    { name: "The Git and GitHub Bootcamp" },
 ];
 
 // ── Research (text-only) ────────────────────────────────────────────
@@ -511,6 +375,8 @@ export const researchItems: ResearchItem[] = [
     {
         title: "Dynamic Programming for Optimal Model Partitioning in Pipeline-Parallel LLM Training",
         context: "IF2211 Algorithm Strategy",
+        summary:
+            "For IF2211 Algorithm Strategy, developed and evaluated Bellman-style minimax dynamic programming to partition contiguous transformer layers across pipeline stages. Across 15 synthetic configurations, the approach met or beat uniform partitioning and reduced makespan by 14–16% on synthetic heterogeneous profiles; it was not evaluated in real GPU-cluster training runs.",
         problem:
             "Split contiguous transformer layers across pipeline stages to minimize the slowest stage's compute cost.",
         method: "Exact Bellman-style minimax dynamic programming with backpointer reconstruction; naive O(KL²) and divide-and-conquer O(KL log L) implementations.",
@@ -532,6 +398,8 @@ export const researchItems: ResearchItem[] = [
     {
         title: "M/M/1 Queue Analysis with Markov Chains and Eigenvalues",
         context: "IF2123 Linear and Geometrical Algebra",
+        summary:
+            "For IF2123 Linear and Geometrical Algebra, characterized an M/M/1 queue steady state with a generator-matrix null-space solution and independently validated it with a C++17 discrete-event simulator. In stable regimes with ρ ≤ 0.9, simulation stayed within 2% of theory, with degradation near saturation characterized in the paper.",
         problem:
             "Characterize the steady state of a continuous-time M/M/1 queue and validate the analytical model independently.",
         method: "Generator-matrix null-space solution using hand-written Gaussian elimination, paired with a C++17 discrete-event simulator.",

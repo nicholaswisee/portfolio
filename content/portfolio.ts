@@ -1,5 +1,8 @@
 import {
     CapabilityGroup,
+    CredentialItem,
+    EducationItem,
+    ExperienceGroup,
     LifeExperience,
     PortfolioLink,
     ResearchItem,
@@ -99,7 +102,7 @@ export const capabilityGroups: CapabilityGroup[] = [
             "payments",
             "auth",
         ],
-        evidenceHref: "#work",
+        evidenceHref: "#projects",
     },
     {
         title: "Systems & Algorithms",
@@ -115,7 +118,7 @@ export const capabilityGroups: CapabilityGroup[] = [
             "graph algorithms",
             "linear algebra",
         ],
-        evidenceHref: "#work",
+        evidenceHref: "#projects",
     },
     {
         title: "Research & Data",
@@ -431,6 +434,78 @@ export const projectArchive: WorkItem[] = [
     },
 ];
 
+export const experienceGroups: ExperienceGroup[] = [
+    {
+        organization: "SPE ITB SC",
+        roles: [{ title: "DevOps Engineer", dates: "Jul 2026-Present" }],
+    },
+    {
+        organization: "Kabinet KM ITB",
+        roles: [{ title: "Backend Engineer", dates: "Jul 2026-Present" }],
+    },
+    {
+        organization: "KSEP ITB",
+        roles: [
+            { title: "Vice Director", dates: "Apr 2025-May 2026" },
+            { title: "President", dates: "May 2026-Present" },
+        ],
+    },
+    {
+        organization: "ARKAVIDIA",
+        roles: [{ title: "Deputy Head of IT", dates: "May 2026-Present" }],
+    },
+    {
+        organization: "Galva",
+        roles: [{ title: "MIS Intern", dates: "Jun-Aug 2026" }],
+    },
+    {
+        organization: "TEDxITB",
+        roles: [
+            { title: "Frontend Developer", dates: "Nov 2024-May 2025" },
+            { title: "Director", dates: "Nov 2025-Jun 2026" },
+        ],
+    },
+    {
+        organization: "Aku Masuk ITB 2026",
+        roles: [{ title: "Deputy Head of IT", dates: "Oct 2025-Feb 2026" }],
+    },
+    {
+        organization: "OSKM ITB 2025",
+        roles: [{ title: "Backend Developer", dates: "Aug 2025" }],
+    },
+    {
+        organization: "IMPACT 5.0",
+        roles: [{ title: "Project Officer", dates: "Jan-Jul 2025" }],
+        metrics: ["146 committees", "9 divisions", "17 subdivisions"],
+    },
+    {
+        organization: "PTD KSEP",
+        roles: [{ title: "Head of OH-KM", dates: "Aug-Sep 2025" }],
+        metrics: ["440+ registrants"],
+    },
+];
+
+export const educationItems: EducationItem[] = [
+    {
+        institution: "Institut Teknologi Bandung",
+        program: "B.Eng in Computer Science",
+        dates: "Aug 2024-Jul 2028 expected",
+        result: "GPA 3.69/4.00",
+    },
+    {
+        institution: "SMAK 1 PENABUR Jakarta",
+        program: "Natural Sciences",
+        dates: "Jul 2021-May 2024",
+        result: "Grade 91.80/100",
+    },
+];
+
+export const credentialItems: CredentialItem[] = [
+    { name: "The Ultimate React Course 2025" },
+    { name: "Responsive Web Design" },
+    { name: "The Git and GitHub Bootcamp" },
+];
+
 // ── Research (text-only) ────────────────────────────────────────────
 export const researchItems: ResearchItem[] = [
     {
@@ -558,7 +633,8 @@ export const lifeExperiences: LifeExperience[] = [
 
 export const navItems: { name: string; link: string }[] = [
     { name: "About", link: "#about" },
-    { name: "Work", link: "#work" },
+    { name: "Projects", link: "#projects" },
+    { name: "Experience", link: "#experience" },
     { name: "Research", link: "#research" },
     { name: "Life", link: "#life" },
     { name: "Contact", link: "#contact" },

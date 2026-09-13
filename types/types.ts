@@ -20,6 +20,33 @@ export type CapabilityGroup = {
   evidenceHref: string;
 };
 
+export type DensityMode = "full" | "compact";
+export type ThemeChoice = "light" | "dark";
+
+export interface TimelineRole {
+  title: string;
+  dates: string;
+}
+
+export interface ExperienceGroup {
+  organization: string;
+  roles: TimelineRole[];
+  summary?: string;
+  metrics?: string[];
+  links?: PortfolioLink[];
+}
+
+export interface EducationItem {
+  institution: string;
+  program: string;
+  dates: string;
+  result: string;
+}
+
+export interface CredentialItem {
+  name: string;
+}
+
 export type WorkItem = {
   name: string;
   category: string;

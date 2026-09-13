@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
 
@@ -73,10 +72,10 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <div
       className={cn(
-        "glass-surface relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full border border-paper-mist/10 px-4 py-2 lg:flex",
+        "glass-surface relative z-[60] mx-auto hidden w-full max-w-7xl grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center self-start rounded-full border border-border px-4 py-2 lg:grid",
         visible
-          ? "backdrop-blur-xl bg-archive-ink/[0.88] shadow-[0_1px_0_0_rgba(22,60,43,0.15)_inset]"
-          : "backdrop-blur-md bg-archive-ink/[0.65] shadow-[0_1px_0_0_rgba(231,236,232,0.06)_inset]",
+          ? "bg-background/90 shadow-lg shadow-foreground/5 backdrop-blur-xl"
+          : "bg-background/75 shadow-md shadow-foreground/5 backdrop-blur-md",
         className,
       )}
     >
@@ -91,8 +90,9 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
+      data-site-nav="true"
       className={cn(
-        "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-1 text-sm font-medium transition-colors duration-200 lg:flex",
+        "relative z-20 hidden flex-row items-center justify-center space-x-1 text-sm font-medium transition-colors duration-200 lg:flex",
         className,
       )}
     >
@@ -102,12 +102,12 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           href={item.link}
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className="relative px-4 py-2 text-paper-mist/80 hover:text-paper-mist motion-safe:active:scale-[0.98]"
+          className="relative rounded-full px-4 py-2 text-muted transition-colors hover:text-foreground focus-visible:bg-elevated focus-visible:text-foreground motion-safe:active:scale-[0.98]"
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 rounded-full bg-paper-mist/10"
+              className="absolute inset-0 rounded-full bg-elevated"
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
             />
           )}
@@ -122,10 +122,10 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <div
       className={cn(
-        "glass-surface relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between rounded-2xl border border-paper-mist/10 px-0 py-2 lg:hidden",
+        "glass-surface relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between rounded-2xl border border-border px-0 py-2 lg:hidden",
         visible
-          ? "backdrop-blur-xl bg-archive-ink/[0.88]"
-          : "backdrop-blur-md bg-archive-ink/[0.65]",
+          ? "bg-background/90 backdrop-blur-xl"
+          : "bg-background/75 backdrop-blur-md",
         className,
       )}
     >
@@ -166,7 +166,7 @@ export const MobileNavMenu = ({
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "absolute inset-x-0 top-14 z-50 flex w-full flex-col items-start justify-start gap-2 rounded-xl border border-paper-mist/10 bg-archive-ink p-4 shadow-lg",
+            "absolute inset-x-0 top-14 z-50 flex w-full flex-col items-start justify-start gap-2 rounded-xl border border-border bg-surface p-4 shadow-lg shadow-foreground/10",
             className,
           )}
         >
@@ -189,7 +189,7 @@ export const MobileNavToggle = ({
       onClick={onClick}
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
-      className="rounded-md p-2 text-paper-mist hover:bg-paper-mist/10 motion-safe:active:scale-[0.98]"
+      className="rounded-md p-2 text-foreground transition-colors hover:bg-elevated focus-visible:bg-elevated motion-safe:active:scale-[0.98]"
     >
       {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
     </button>
@@ -200,9 +200,12 @@ export const NavbarLogo = () => {
   return (
     <a
       href="#top"
-      className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal text-paper-mist"
+      aria-label="Nicholas Wise home"
+      className="relative z-20 mr-4 flex justify-self-start space-x-2 rounded-md px-2 py-1 text-sm font-normal text-foreground focus-visible:bg-elevated"
     >
-      <Image src="/logo.png" alt="Nicholas Wise logo" width={30} height={30} />
+      <span aria-hidden="true" className="font-display text-base font-semibold tracking-tight text-foreground">
+        NW
+      </span>
     </a>
   );
 };

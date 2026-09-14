@@ -25,6 +25,7 @@ export interface ExperienceGroup {
   organization: string;
   roles: TimelineRole[];
   summary?: string;
+  highlights?: string[];
   metrics?: string[];
   links?: PortfolioLink[];
 }

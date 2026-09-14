@@ -313,12 +313,13 @@ export const experienceGroups: ExperienceGroup[] = [
     {
         organization: "SPE ITB SC",
         roles: [{ title: "DevOps Engineer", dates: "Jul 2026-Present" }],
-        summary: "Current DevOps Engineer role.",
+        summary:
+            "Optimizing CI/CD and deployment workflows for SPE ITB SC's WebDev team. Work in progress.",
     },
     {
         organization: "Kabinet KM ITB",
         roles: [{ title: "Backend Engineer", dates: "Jul 2026-Present" }],
-        summary: "Current Backend Engineer role.",
+        summary: "Backend engineering role; details in progress.",
     },
     {
         organization: "KSEP ITB",
@@ -326,12 +327,19 @@ export const experienceGroups: ExperienceGroup[] = [
             { title: "Vice Director", dates: "Apr 2025-May 2026" },
             { title: "President", dates: "May 2026-Present" },
         ],
-        summary: "Served as Vice Director before becoming President.",
+        summary:
+            "Bringing #WalkWithWisdom to KSEP ITB, empowering members in growth, knowledge, and kinship. Work in progress.",
+        highlights: [
+            "Led and contributed to four professional KSEP websites.",
+            "Supervised a team of four.",
+            "Worked on design, implementation, and deployment.",
+        ],
     },
     {
         organization: "ARKAVIDIA",
         roles: [{ title: "Deputy Head of IT", dates: "May 2026-Present" }],
-        summary: "Current Deputy Head of IT role.",
+        summary:
+            "Overseeing Software Engineering and UI/UX divisions at Arkavidia 11. Work in progress.",
     },
     {
         organization: "Galva",
@@ -345,11 +353,27 @@ export const experienceGroups: ExperienceGroup[] = [
             { title: "Director", dates: "Nov 2025-Jun 2026" },
         ],
         summary: "Contributed as Frontend Developer and later served as Director.",
+        highlights: [
+            "Eliminated 100% of oversell incidents.",
+            "Reached a 98% successful checkout rate across four ticket-release windows.",
+            "Increased publicity reach by 50%.",
+            "Reduced LCP by 40% and reached 93/100 Lighthouse performance.",
+            "Reduced manual attendee follow-up by approximately 85%.",
+            "Delivered payment confirmations, reminders, and QR-ticket emails within 60 seconds.",
+            "Processed 100+ orders and generated Rp20M+ in ticket and merchandise purchases.",
+        ],
     },
     {
         organization: "Aku Masuk ITB 2026",
         roles: [{ title: "Deputy Head of IT", dates: "Oct 2025-Feb 2026" }],
-        summary: "Served as Deputy Head of IT from October 2025 through February 2026.",
+        summary:
+            "Coordinated a 12-person team building an e-commerce platform for event registration and merchandise sales.",
+        highlights: [
+            "Reduced admin workload by approximately 55% with dashboard features.",
+            "Supported 7,000+ concurrent users with 99.95% uptime during peak ticket drops.",
+            "Achieved 98.7% cart-to-payment conversion and raised over Rp120M in sales.",
+            "Reduced deployment time from 30 minutes to under 4 minutes.",
+        ],
     },
     {
         organization: "OSKM ITB 2025",
@@ -367,6 +391,34 @@ export const experienceGroups: ExperienceGroup[] = [
         roles: [{ title: "Head of OH-KM", dates: "Aug-Sep 2025" }],
         summary: "Head of OH-KM for an event with more than 440 registrants.",
         metrics: ["440+ registrants"],
+    },
+    {
+        organization: "Inkubator IT",
+        roles: [
+            { title: "Technology Development Associate", dates: "Oct 2025-Present" },
+        ],
+        summary:
+            "Member of Technology Development Staff, serving as a Software Engineer for incoming projects.",
+    },
+    {
+        organization: "Himpunan Mahasiswa Informatika (HMIF) ITB",
+        roles: [
+            { title: "Technology and Research Intern", dates: "Oct 2025-Feb 2026" },
+        ],
+        summary:
+            "Participated in development of HMIF's internal app as part of the UI/UX team.",
+    },
+    {
+        organization: "Parade Wisuda April ITB 2025",
+        roles: [{ title: "Frontend Developer", dates: "Feb-Apr 2025" }],
+        summary:
+            "Developed a menfess system enabling private messages to graduates in one week.",
+    },
+    {
+        organization: "TEDxYouth@Smakone",
+        roles: [{ title: "Frontend Developer", dates: "2023-2023" }],
+        summary:
+            "Participated in creation and design of the website using ReactJS and TailwindCSS.",
     },
 ];
 

@@ -14,6 +14,7 @@ export default function Experience() {
             aria-labelledby="experience-title"
             data-section="experience"
             data-experience-layout={isCompact ? "compact" : "full"}
+            data-surface="elevated"
         >
             <div className="site-container">
                 <div className={isCompact ? "mb-8" : "mb-10 md:mb-14"}>
@@ -58,6 +59,15 @@ export default function Experience() {
                                     >
                                         {group.summary}
                                     </p>
+                                    {group.highlights && (
+                                        <ul className={`${isCompact ? "mt-2 space-y-1 text-sm" : "mt-4 space-y-2 text-sm"} list-disc pl-5 leading-relaxed text-foreground/80`}>
+                                            {group.highlights.map((highlight) => (
+                                                <li key={highlight} data-experience-highlight="true">
+                                                    {highlight}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
                                     {group.metrics && (
                                         <ul className={`${isCompact ? "mt-2 gap-x-3 gap-y-1 text-xs text-muted" : "mt-3 gap-2"} flex flex-wrap`} aria-label="Approved metrics">
                                             {group.metrics.map((metric) => (

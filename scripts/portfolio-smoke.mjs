@@ -10,6 +10,7 @@ if (!existsSync(buildPath)) {
 } else {
   const html = readFileSync(buildPath, "utf8");
   const experienceSource = readFileSync("components/Experience.tsx", "utf8");
+  const portfolioSource = readFileSync("content/portfolio.ts", "utf8");
   const count = (pattern) => (html.match(pattern) ?? []).length;
   const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const scriptRanges = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi)].map(
@@ -340,7 +341,7 @@ if (!existsSync(buildPath)) {
       ]),
     ],
     [
-      "IMPACT 5.0 retains approved metrics",
+      "IMPACT 5.0 retains its leadership summary",
       hasMarkedElementWithTexts("data-experience-group", "true", [
         "IMPACT 5.0",
         "146 committees",
@@ -349,8 +350,13 @@ if (!existsSync(buildPath)) {
       ]),
     ],
     [
-      "PTD KSEP retains its approved metric",
+      "PTD KSEP retains its campaign summary",
       hasMarkedElementWithTexts("data-experience-group", "true", ["PTD KSEP", "440+ registrants"]),
+    ],
+    [
+      "IMPACT and PTD KSEP do not render metric chips",
+      !portfolioSource.includes('metrics: ["146 committees"') &&
+        !portfolioSource.includes('metrics: ["440+ registrants"'),
     ],
     ...requiredAssets.map((assetPath) => [
       `required local asset ${assetPath} exists`,

@@ -314,12 +314,24 @@ export const experienceGroups: ExperienceGroup[] = [
         organization: "SPE ITB SC",
         roles: [{ title: "DevOps Engineer", dates: "Jul 2026-Present" }],
         summary:
-            "Optimizing CI/CD and deployment workflows for SPE ITB SC's WebDev team. Work in progress.",
+            "Built a 3-repository CI/CD pipeline with GitHub Actions, automating linting, testing, type checking, builds, and GHCR image publishing across frontend and backend services.",
+        highlights: [
+            "Implemented Docker Compose deployments for a 4-service production stack, reducing manual deployment overhead by approximately 70% and cutting release time to under 4 minutes.",
+            "Established digest-pinned releases for 2 application images, enabling reproducible deployments and complete frontend/backend version traceability.",
+            "Configured approval-gated SSH deployments to a VPS with protected secrets, health checks, and 120-second deployment timeouts.",
+            "Automated HTTPS delivery through Nginx and host-level Certbot, supporting TLS termination, certificate renewal, and public routing across ports 80 and 443.",
+            "Developed rollback workflows that restore the previous application release without restarting PostgreSQL or Nginx, minimizing production downtime.",
+        ],
     },
     {
         organization: "Kabinet KM ITB",
         roles: [{ title: "Backend Engineer", dates: "Jul 2026-Present" }],
-        summary: "Backend engineering role; details in progress.",
+        summary:
+            "Reworked a Go/Fiber link-shortening platform serving creator-generated links with role-based admin controls.",
+        highlights: [
+            "Implemented 4 protected admin APIs for platform statistics, global link search/filtering, status management, and deletion.",
+            "Maintained deployment pipelines for Go backend and Vite frontend builds, artifact packaging, self-hosted VPS deployment, PM2 restarts, and post-deployment health checks.",
+        ],
     },
     {
         organization: "KSEP ITB",
@@ -378,19 +390,23 @@ export const experienceGroups: ExperienceGroup[] = [
     {
         organization: "OSKM ITB 2025",
         roles: [{ title: "Backend Developer", dates: "Aug 2025" }],
-        summary: "Worked as a Backend Developer in August 2025.",
+        summary:
+            "Developed and implemented several API endpoints for OSKM ITB 2025's companion app, used by up to 5,000 concurrent users at peak traffic. Participated in an Agile-Scrum workflow.",
     },
     {
         organization: "IMPACT 5.0",
         roles: [{ title: "Project Officer", dates: "Jan-Jul 2025" }],
-        summary: "Project Officer for a committee of 146 across 9 divisions and 17 subdivisions.",
-        metrics: ["146 committees", "9 divisions", "17 subdivisions"],
+        summary:
+            "Managed 146 committees in organizing university admission test tutorials and an annual informatics, mathematics, and physics competition for high school students, demonstrating strong leadership and organizational skills.",
+        highlights: [
+            "Coordinated 9 divisions including 17 subdivisions across a 6-month period of intensive work, showcasing project management skills.",
+        ],
     },
     {
         organization: "PTD KSEP",
         roles: [{ title: "Head of OH-KM", dates: "Aug-Sep 2025" }],
-        summary: "Head of OH-KM for an event with more than 440 registrants.",
-        metrics: ["440+ registrants"],
+        summary:
+            "Having fun at OSKM ITB, coordinated a promotional campaign for KSEP ITB and its introductory programme, PTD KSEP. Successfully gained 440+ registrants!",
     },
     {
         organization: "Inkubator IT",

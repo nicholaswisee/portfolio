@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useId, useState } from "react";
 import type { DensityMode, ThemeChoice } from "@/types/types";
 
 const THEME_STORAGE_KEY = "portfolio-theme";
@@ -108,54 +108,28 @@ export function usePortfolioPreferences() {
 
 export function ThemeControl() {
   const { setTheme, theme } = usePortfolioPreferences();
+  const controlId = useId();
 
   return (
-    <div aria-label="Theme preference" data-theme-control="true" role="group">
-      <button
-        type="button"
-        aria-label="Use light theme"
-        aria-pressed={theme === "light"}
-        className="rounded-l-md border border-border bg-surface px-3 py-2 text-sm text-foreground hover:border-accent"
-        onClick={() => setTheme("light")}
-      >
-        Light
-      </button>
-      <button
-        type="button"
-        aria-label="Use dark theme"
-        aria-pressed={theme === "dark"}
-        className="-ml-px rounded-r-md border border-border bg-surface px-3 py-2 text-sm text-foreground hover:border-accent"
-        onClick={() => setTheme("dark")}
-      >
-        Dark
-      </button>
-    </div>
+    <fieldset aria-label="Theme preference" data-theme-control="true" className="preference-pill">
+      <input id={`theme-light-${controlId}`} type="radio" name={`theme-${controlId}`} value="light" checked={theme === "light"} onChange={() => setTheme("light")} />
+      <label htmlFor={`theme-light-${controlId}`}>Light</label>
+      <input id={`theme-dark-${controlId}`} type="radio" name={`theme-${controlId}`} value="dark" checked={theme === "dark"} onChange={() => setTheme("dark")} />
+      <label htmlFor={`theme-dark-${controlId}`}>Dark</label>
+    </fieldset>
   );
 }
 
 export function DensityControl() {
   const { density, setDensity } = usePortfolioPreferences();
+  const controlId = useId();
 
   return (
-    <div aria-label="Density preference" data-density-control="true" role="group">
-      <button
-        type="button"
-        aria-label="Use full density"
-        aria-pressed={density === "full"}
-        className="rounded-l-md border border-border bg-surface px-3 py-2 text-sm text-foreground hover:border-accent"
-        onClick={() => setDensity("full")}
-      >
-        Full
-      </button>
-      <button
-        type="button"
-        aria-label="Use compact density"
-        aria-pressed={density === "compact"}
-        className="-ml-px rounded-r-md border border-border bg-surface px-3 py-2 text-sm text-foreground hover:border-accent"
-        onClick={() => setDensity("compact")}
-      >
-        Compact
-      </button>
-    </div>
+    <fieldset aria-label="Density preference" data-density-control="true" className="preference-pill">
+      <input id={`density-full-${controlId}`} type="radio" name={`density-${controlId}`} value="full" checked={density === "full"} onChange={() => setDensity("full")} />
+      <label htmlFor={`density-full-${controlId}`}>Full</label>
+      <input id={`density-compact-${controlId}`} type="radio" name={`density-${controlId}`} value="compact" checked={density === "compact"} onChange={() => setDensity("compact")} />
+      <label htmlFor={`density-compact-${controlId}`}>Compact</label>
+    </fieldset>
   );
 }

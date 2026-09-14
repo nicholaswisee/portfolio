@@ -29,11 +29,13 @@ export function Nav() {
     <header className="relative w-full">
       <Navbar>
           <NavBody>
-            <NavbarLogo />
-             <NavItems items={visibleNavItems} />
+            <div className="relative z-30 flex min-w-0 items-center gap-2">
+              <NavbarLogo />
+              <DensityControl />
+            </div>
+            <NavItems items={visibleNavItems} />
             <div className="relative z-30 flex shrink-0 items-center justify-self-end gap-2">
               <ThemeControl />
-              <DensityControl />
             </div>
           </NavBody>
 
@@ -51,8 +53,8 @@ export function Nav() {
             onClose={() => setIsMobileMenuOpen(false)}
           >
             <div className="flex w-full flex-col gap-3 border-b border-border pb-3">
-              <ThemeControl />
               <DensityControl />
+              <ThemeControl />
             </div>
             {visibleNavItems.map((item, idx) => (
               <a

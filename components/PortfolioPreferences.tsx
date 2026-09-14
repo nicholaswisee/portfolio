@@ -112,10 +112,11 @@ export function ThemeControl() {
 
   return (
     <fieldset aria-label="Theme preference" data-theme-control="true" className="preference-pill">
-      <input id={`theme-light-${controlId}`} type="radio" name={`theme-${controlId}`} value="light" checked={theme === "light"} onChange={() => setTheme("light")} />
-      <label htmlFor={`theme-light-${controlId}`}>Light</label>
-      <input id={`theme-dark-${controlId}`} type="radio" name={`theme-${controlId}`} value="dark" checked={theme === "dark"} onChange={() => setTheme("dark")} />
-      <label htmlFor={`theme-dark-${controlId}`}>Dark</label>
+       <input id={`theme-light-${controlId}`} type="radio" name={`theme-${controlId}`} value="light" checked={theme === "light"} onChange={() => setTheme("light")} />
+       <label htmlFor={`theme-light-${controlId}`}>Light</label>
+       <input id={`theme-dark-${controlId}`} type="radio" name={`theme-${controlId}`} value="dark" checked={theme === "dark"} onChange={() => setTheme("dark")} />
+       <label htmlFor={`theme-dark-${controlId}`}>Dark</label>
+       <span className="preference-pill-thumb" aria-hidden="true" />
     </fieldset>
   );
 }
@@ -126,10 +127,11 @@ export function DensityControl() {
 
   return (
     <fieldset aria-label="Density preference" data-density-control="true" className="preference-pill">
-      <input id={`density-full-${controlId}`} type="radio" name={`density-${controlId}`} value="full" checked={density === "full"} onChange={() => setDensity("full")} />
-      <label htmlFor={`density-full-${controlId}`}>Full</label>
-      <input id={`density-compact-${controlId}`} type="radio" name={`density-${controlId}`} value="compact" checked={density === "compact"} onChange={() => setDensity("compact")} />
-      <label htmlFor={`density-compact-${controlId}`}>Compact</label>
+       <input id={`density-full-${controlId}`} type="radio" name={`density-${controlId}`} value="full" checked={density === "full"} onChange={() => setDensity("full")} />
+       <label htmlFor={`density-full-${controlId}`}>Full</label>
+       <input id={`density-compact-${controlId}`} type="radio" name={`density-${controlId}`} value="compact" checked={density === "compact"} onChange={() => setDensity("compact")} />
+       <label htmlFor={`density-compact-${controlId}`}>Compact</label>
+       <span className="preference-pill-thumb" aria-hidden="true" />
     </fieldset>
   );
 }

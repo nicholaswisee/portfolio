@@ -201,11 +201,9 @@ export const NavbarLogo = () => {
     <a
       href="#top"
       aria-label="Nicholas Wise home"
-      className="relative z-20 mr-4 flex justify-self-start space-x-2 rounded-md px-2 py-1 text-sm font-normal text-foreground focus-visible:bg-elevated"
+      className="relative z-20 flex shrink-0 justify-self-start rounded-md p-1 focus-visible:bg-elevated"
     >
-      <span aria-hidden="true" className="font-display text-base font-semibold tracking-tight text-foreground">
-        NW
-      </span>
+      <img src="/favicon.ico" alt="" aria-hidden="true" className="size-7 rounded-[0.35rem]" />
     </a>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { usePortfolioPreferences } from "./PortfolioPreferences";
 import { techStackCategories } from "@/content/portfolio";
@@ -18,9 +19,10 @@ export default function AboutSkills() {
             className="section-block bg-elevated"
             aria-labelledby="about-title"
             data-density-presentation={isCompact ? "compact" : "full"}
+            data-layout="full-width"
         >
             <div className="site-container">
-                <div className={`grid grid-cols-1 ${isCompact ? "gap-6 lg:gap-8" : "gap-10 lg:gap-12"} lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]`}>
+                <div className={isCompact ? "space-y-8" : "space-y-12 md:space-y-16"}>
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -76,14 +78,23 @@ export default function AboutSkills() {
                         </div>
                         <div className={`${isCompact ? "space-y-3 pt-4" : "space-y-5 pt-6"} section-rule`}>
                             {techStackCategories.map((category) => (
-                                <section key={category.title} data-stack={category.title}>
+                                <section key={category.title} data-stack={category.title} data-layout="full-width">
                                     <h3 className="text-sm font-medium text-foreground">
                                         {category.title}
                                     </h3>
                                     {isCompact ? (
-                                        <p className="mt-2 text-sm leading-relaxed text-foreground/80">
-                                            {category.items.map((item) => item.name).join(" · ")}
-                                        </p>
+                                        <ul className="mt-2 flex flex-wrap gap-2">
+                                            {category.items.map((item) => (
+                                                <li
+                                                    key={item.name}
+                                                    className="flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
+                                                    data-skill-fallback={item.icon ? undefined : "text"}
+                                                >
+                                                    {item.icon && <Image src={item.icon} alt="" width={18} height={18} data-tech-icon="true" />}
+                                                    {item.name}
+                                                </li>
+                                            ))}
+                                        </ul>
                                     ) : (
                                         <div
                                             className="tech-lane-viewport mt-3"
@@ -98,6 +109,7 @@ export default function AboutSkills() {
                                                             className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
                                                             data-skill-fallback={item.icon ? undefined : "text"}
                                                         >
+                                                            {item.icon && <Image src={item.icon} alt="" width={18} height={18} data-tech-icon="true" />}
                                                             {item.name}
                                                         </li>
                                                     ))}
@@ -109,6 +121,7 @@ export default function AboutSkills() {
                                                         className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
                                                         data-skill-fallback={item.icon ? undefined : "text"}
                                                     >
+                                                        {item.icon && <Image src={item.icon} alt="" width={18} height={18} data-tech-icon="true" />}
                                                         {item.name}
                                                     </li>
                                                     ))}

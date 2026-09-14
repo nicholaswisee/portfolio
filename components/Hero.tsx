@@ -106,25 +106,28 @@ export default function Hero() {
                     </motion.div>
                 </div>
 
-                <motion.div
-                    custom={0.2}
-                    initial="hidden"
-                    animate="visible"
-                    variants={entrance}
-                    data-motion-content="true"
-                    className="flex justify-center"
-                >
-                    <Image
-                        src="/me.png"
-                        alt="Portrait of Nicholas Wise Saragih Sumbayak"
-                        width={500}
-                        height={625}
-                        priority
-                        unoptimized
-                        sizes="(max-width: 768px) 160px, (max-width: 1024px) 208px, 384px"
-                        className={`rounded-xl border-2 border-accent/30 object-cover shadow-xl motion-safe:transition-transform motion-safe:duration-500 motion-safe:hover:scale-[1.02] ${isCompact ? "h-44 w-36 sm:h-52 sm:w-42" : "h-64 w-52 sm:h-80 sm:w-64 lg:h-120 lg:w-96"}`}
-                    />
-                </motion.div>
+                {!isCompact && (
+                    <motion.div
+                        custom={0.2}
+                        initial="hidden"
+                        animate="visible"
+                        variants={entrance}
+                        data-motion-content="true"
+                        data-portrait="full-only"
+                        className="flex justify-center"
+                    >
+                        <Image
+                            src="/me.png"
+                            alt="Portrait of Nicholas Wise Saragih Sumbayak"
+                            width={500}
+                            height={625}
+                            priority
+                            unoptimized
+                            sizes="(max-width: 768px) 160px, (max-width: 1024px) 208px, 384px"
+                            className="h-64 w-52 rounded-xl border-2 border-accent/30 object-cover shadow-xl motion-safe:transition-transform motion-safe:duration-500 motion-safe:hover:scale-[1.02] sm:h-80 sm:w-64 lg:h-120 lg:w-96"
+                        />
+                    </motion.div>
+                )}
             </div>
         </section>
     );

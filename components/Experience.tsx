@@ -1,9 +1,11 @@
 "use client";
 
 import { experienceGroups } from "@/content/portfolio";
+import { motion, useReducedMotion } from "motion/react";
 import { usePortfolioPreferences } from "./PortfolioPreferences";
 
 export default function Experience() {
+    const prefersReducedMotion = useReducedMotion();
     const { density } = usePortfolioPreferences();
     const isCompact = density === "compact";
 
@@ -30,9 +32,16 @@ export default function Experience() {
                     className={isCompact ? "compact-experience-list" : "experience-timeline"}
                     data-experience-layout={isCompact ? undefined : "full"}
                 >
-                    {experienceGroups.map((group) => (
+                    {experienceGroups.map((group, index) => (
                         <li key={group.organization}>
-                            <article
+                            <motion.article
+                                initial={{ opacity: 0, y: isCompact ? 0 : 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{
+                                    duration: prefersReducedMotion ? 0 : 0.4,
+                                    delay: prefersReducedMotion ? 0 : index * 0.06,
+                                }}
                                 data-experience-group="true"
                                 className={`grid gap-4 ${isCompact ? "compact-experience-row" : "experience-timeline-entry sm:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)]"}`}
                             >
@@ -84,7 +93,7 @@ export default function Experience() {
                                         </ul>
                                     )}
                                 </div>
-                            </article>
+                            </motion.article>
                         </li>
                     ))}
                 </ol>

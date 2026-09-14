@@ -9,6 +9,7 @@ if (!existsSync(buildPath)) {
   process.exitCode = 1;
 } else {
   const html = readFileSync(buildPath, "utf8");
+  const experienceSource = readFileSync("components/Experience.tsx", "utf8");
   const count = (pattern) => (html.match(pattern) ?? []).length;
   const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const scriptRanges = [...html.matchAll(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi)].map(
@@ -295,6 +296,12 @@ if (!existsSync(buildPath)) {
     [
       "every experience group has a short description",
       count(/data-experience-description="true"/g) === 14,
+    ],
+    [
+      "Experience entries animate once in view with reduced-motion support",
+      experienceSource.includes("motion.article") &&
+        experienceSource.includes("whileInView") &&
+        experienceSource.includes("useReducedMotion"),
     ],
     ...experienceGroups.flatMap(([organization, roles]) => [
       [

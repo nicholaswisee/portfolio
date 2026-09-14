@@ -1,7 +1,20 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Newsreader } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Navbar";
 import { PortfolioPreferencesProvider } from "@/components/PortfolioPreferences";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+const newsreader = Newsreader({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   title: "Nicholas Wise — Engineer, Researcher, and Builder",
@@ -43,7 +56,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: prepaintThemeScript }} />
       </head>
-      <body className="bg-background font-sans text-foreground antialiased">
+      <body
+        className={`${plusJakartaSans.variable} ${newsreader.variable} bg-background font-sans text-foreground antialiased`}
+      >
         <PortfolioPreferencesProvider>
           <div data-preference-provider="portfolio">
             <a

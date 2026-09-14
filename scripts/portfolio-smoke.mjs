@@ -64,6 +64,14 @@ if (!existsSync(buildPath)) {
     markedElements(attribute, value).some((element) =>
       texts.every((text) => element.includes(text)),
     );
+  const hasRadioChoice = (name, value) =>
+    new RegExp(
+      `<input\\b(?=[^>]*\\btype\\s*=\\s*["']radio["'])(?=[^>]*\\bname\\s*=\\s*["']${escapeRegExp(name)}(?:-[^"']+)?["'])(?=[^>]*\\bvalue\\s*=\\s*["']${escapeRegExp(value)}["'])[^>]*>`,
+      "i",
+    ).test(html);
+  const sectionElement = (section) => markedElements("data-section", section)[0] ?? "";
+  const dataAttribute = (element, attribute) =>
+    element.match(new RegExp(`\\b${escapeRegExp(attribute)}\\s*=\\s*["']([^"']+)["']`, "i"))?.[1] ?? "";
   const sectionIds = ["top", "about", "projects", "experience", "research", "life", "contact"];
   const sectionPositions = sectionIds.map(
     (id) => openingElements("id", id)[0]?.index ?? -1,
@@ -130,6 +138,16 @@ if (!existsSync(buildPath)) {
     ["IMPACT 5.0", [["Project Officer", "Jan-Jul 2025"]]],
     ["PTD KSEP", [["Head of OH-KM", "Aug-Sep 2025"]]],
   ];
+  const addedExperienceGroups = [
+    ["Inkubator IT", "Technology Development Associate", "Oct 2025-Present"],
+    [
+      "Himpunan Mahasiswa Informatika (HMIF) ITB",
+      "Technology and Research Intern",
+      "Oct 2025-Feb 2026",
+    ],
+    ["Parade Wisuda April ITB 2025", "Frontend Developer", "Feb-Apr 2025"],
+    ["TEDxYouth@Smakone", "Frontend Developer", "2023-2023"],
+  ];
   const checks = [
     [
       "section IDs are present in the required order",
@@ -158,12 +176,57 @@ if (!existsSync(buildPath)) {
       html.includes('data-preference-provider="portfolio"'),
     ],
     [
-      "theme controls expose pressed state",
-      hasMarkedElementWithTexts("data-theme-control", "true", ['aria-pressed="']),
+      "theme controls expose a native radio group",
+      hasMarkedElementWithTexts("data-theme-control", "true", ['type="radio"']),
     ],
     [
-      "density controls expose pressed state",
-      hasMarkedElementWithTexts("data-density-control", "true", ['aria-pressed="']),
+      "density controls expose a native radio group",
+      hasMarkedElementWithTexts("data-density-control", "true", ['type="radio"']),
+    ],
+    [
+      "theme preferences use native Light and Dark radios",
+      hasRadioChoice("theme", "light") && hasRadioChoice("theme", "dark") &&
+        html.includes("Light") && html.includes("Dark"),
+    ],
+    [
+      "density preferences use native Full and Compact radios",
+      hasRadioChoice("density", "full") && hasRadioChoice("density", "compact") &&
+        html.includes("Full") && html.includes("Compact"),
+    ],
+    [
+      "preference radios use instance-safe group names",
+      /name="theme-[^"]+"/.test(html) && /name="density-[^"]+"/.test(html),
+    ],
+    [
+      "preferences do not use a Compact portrait control",
+      !html.includes("Compact portrait") && !html.includes("compact portrait"),
+    ],
+    [
+      "portrait renders only in the full presentation branch",
+      html.includes('data-portrait="full-only"'),
+    ],
+    [
+      "About uses a full-width layout",
+      dataAttribute(sectionElement("about"), "data-layout") === "full-width",
+    ],
+    [
+      "About precedes the full-width technology stack",
+      sectionPositions[1] >= 0 &&
+        openingElements("data-stack", "Core Languages")[0]?.index > sectionPositions[1] &&
+        dataAttribute(sectionElement("about"), "data-layout") === "full-width" &&
+        dataAttribute(openingElements("data-stack", "Core Languages")[0]?.[0] ?? "", "data-layout") ===
+          "full-width",
+    ],
+    [
+      "Experience and Research use alternating surfaces",
+      dataAttribute(sectionElement("experience"), "data-surface") !== "" &&
+        dataAttribute(sectionElement("research"), "data-surface") !== "" &&
+        dataAttribute(sectionElement("experience"), "data-surface") !==
+          dataAttribute(sectionElement("research"), "data-surface"),
+    ],
+    [
+      "technology skills expose icons",
+      count(/data-tech-icon="true"/g) > 0,
     ],
     ["About capability groups are removed", !html.includes("data-capability-group=")],
     ["About education is removed", !html.includes('data-education-block="true"')],
@@ -226,12 +289,12 @@ if (!existsSync(buildPath)) {
       ]),
     ],
     [
-      "exactly ten experience groups render",
-      count(/data-experience-group="true"/g) === 10,
+      "all fourteen experience groups render",
+      count(/data-experience-group="true"/g) === 14,
     ],
     [
       "every experience group has a short description",
-      count(/data-experience-description="true"/g) === 10,
+      count(/data-experience-description="true"/g) === 14,
     ],
     ...experienceGroups.flatMap(([organization, roles]) => [
       [
@@ -243,6 +306,32 @@ if (!existsSync(buildPath)) {
         hasMarkedElementWithTexts("data-experience-role", "true", [title, dates]),
       ]),
     ]),
+    ...addedExperienceGroups.flatMap(([organization, title, dates]) => [
+      [
+        `${organization} is a PDF-backed added experience group`,
+        hasMarkedElementWithTexts("data-experience-group", "true", [organization]),
+      ],
+      [
+        `${organization} ${title} has its PDF-backed dates`,
+        hasMarkedElementWithTexts("data-experience-role", "true", [title, dates]),
+      ],
+    ]),
+    [
+      "TEDxITB retains its PDF-backed highlights",
+      hasMarkedElementWithTexts("data-experience-group", "true", [
+        "TEDxITB",
+        "98% successful checkout rate",
+        "Rp20M+",
+      ]),
+    ],
+    [
+      "Aku Masuk ITB retains its PDF-backed highlights",
+      hasMarkedElementWithTexts("data-experience-group", "true", [
+        "Aku Masuk ITB 2026",
+        "7,000+ concurrent users",
+        "99.95% uptime",
+      ]),
+    ],
     [
       "IMPACT 5.0 retains approved metrics",
       hasMarkedElementWithTexts("data-experience-group", "true", [

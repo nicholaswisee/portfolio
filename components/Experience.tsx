@@ -13,7 +13,7 @@ export default function Experience() {
             className="section-block bg-elevated"
             aria-labelledby="experience-title"
             data-section="experience"
-            data-experience-layout={isCompact ? "compact" : "full"}
+            data-experience-layout={isCompact ? "compact" : undefined}
             data-surface="elevated"
         >
             <div className="site-container">
@@ -26,12 +26,15 @@ export default function Experience() {
                     </p>
                 </div>
 
-                <ol className={isCompact ? "compact-experience-list" : "space-y-3"}>
+                <ol
+                    className={isCompact ? "compact-experience-list" : "experience-timeline"}
+                    data-experience-layout={isCompact ? undefined : "full"}
+                >
                     {experienceGroups.map((group) => (
                         <li key={group.organization}>
                             <article
                                 data-experience-group="true"
-                                className={`grid gap-4 ${isCompact ? "compact-experience-row" : "rounded-xl border border-border bg-surface p-5 sm:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)]"}`}
+                                className={`grid gap-4 ${isCompact ? "compact-experience-row" : "experience-timeline-entry sm:grid-cols-[minmax(0,0.65fr)_minmax(0,1.35fr)]"}`}
                             >
                                 <h3 className="font-display text-lg font-medium text-foreground">
                                     {group.organization}

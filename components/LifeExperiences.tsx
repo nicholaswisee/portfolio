@@ -44,19 +44,17 @@ export default function LifeExperiences() {
                             className="life-collage-item group relative overflow-hidden rounded-xl bg-slate-field"
                             data-motion-content="true"
                         >
-                            <Image
+                             <Image
                                 src={item.image}
                                 alt={item.imageAlt}
                                 fill
                                 sizes="(max-width: 768px) 50vw, 33vw"
                                 className="life-collage-image object-cover"
                             />
+                            <div className="life-collage-overlay absolute inset-0" aria-hidden="true" />
                             <figcaption className="life-collage-caption absolute inset-x-0 bottom-0 p-4 md:p-5">
                                 <p className="font-display text-lg leading-tight text-paper-mist md:text-xl">
                                     {item.title}
-                                </p>
-                                <p className="mt-1 text-sm text-paper-mist/80">
-                                    {item.place}
                                 </p>
                             </figcaption>
                         </motion.figure>

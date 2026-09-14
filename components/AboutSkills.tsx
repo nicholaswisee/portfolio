@@ -106,7 +106,7 @@ export default function AboutSkills() {
                                                     {category.items.map((item) => (
                                                         <li
                                                             key={item.name}
-                                                            className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
+                                                            className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
                                                             data-skill-fallback={item.icon ? undefined : "text"}
                                                         >
                                                             {item.icon && <Image src={item.icon} alt="" width={18} height={18} data-tech-icon="true" />}
@@ -118,7 +118,7 @@ export default function AboutSkills() {
                                                     {category.items.map((item) => (
                                                     <li
                                                         key={item.name}
-                                                        className="rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
+                                                        className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-2 text-sm text-foreground"
                                                         data-skill-fallback={item.icon ? undefined : "text"}
                                                     >
                                                         {item.icon && <Image src={item.icon} alt="" width={18} height={18} data-tech-icon="true" />}

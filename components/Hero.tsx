@@ -47,7 +47,7 @@ export default function Hero() {
                         data-motion-content="true"
                         className={`font-display font-medium leading-[var(--leading-display)] text-foreground ${isCompact ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl" : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl"}`}
                     >
-                        Nicholas Wise Saragih Sumbayak
+                        Nicholas <span className={isCompact ? "hero-wise hero-wise-compact" : "hero-wise hero-wise-full"}>Wise</span> Saragih Sumbayak
                     </motion.h1>
 
                     <motion.p

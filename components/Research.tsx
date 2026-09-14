@@ -12,11 +12,12 @@ export default function Research() {
     return (
         <section
             id="research"
-            className="section-block bg-elevated"
+            className="section-block bg-surface"
             aria-labelledby="research-title"
             data-section="research"
             data-research-layout="text-only"
             data-density-presentation={isCompact ? "compact" : "full"}
+            data-surface="surface"
         >
             <div className="site-container">
                 <div className={isCompact ? "mb-8" : "mb-10 md:mb-14"}>

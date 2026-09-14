@@ -51,7 +51,6 @@ export default function LifeExperiences() {
                                 sizes="(max-width: 768px) 50vw, 33vw"
                                 className="life-collage-image object-cover"
                             />
-                            <div className="pointer-events-none absolute inset-0 bg-foreground/70" />
                             <figcaption className="life-collage-caption absolute inset-x-0 bottom-0 p-4 md:p-5">
                                 <p className="font-display text-lg leading-tight text-paper-mist md:text-xl">
                                     {item.title}

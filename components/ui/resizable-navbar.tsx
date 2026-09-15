@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { usePortfolioPreferences } from "@/components/PortfolioPreferences";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
@@ -197,13 +198,20 @@ export const MobileNavToggle = ({
 };
 
 export const NavbarLogo = () => {
+  const { theme } = usePortfolioPreferences();
+
   return (
     <a
       href="#top"
       aria-label="Nicholas Wise home"
       className="relative z-20 flex shrink-0 justify-self-start rounded-md p-1 focus-visible:bg-elevated"
     >
-      <img src="/favicon.ico" alt="" aria-hidden="true" className="size-7 rounded-[0.35rem]" />
+      <img
+        src={theme === "dark" ? "/logo.png" : "/logo-invert.png"}
+        alt=""
+        aria-hidden="true"
+        className="size-7 rounded-[0.35rem]"
+      />
     </a>
   );
 };
